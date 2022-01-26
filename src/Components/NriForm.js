@@ -5,7 +5,6 @@ import home from "../SvgIcons/home.svg";
 import help from "../SvgIcons/help.svg";
 
 const NriForm = () => {
-
   const [ImagePreview, setImagePreview] = useState(null);
   const [InvalidImgFormat, setInvalidImgFormat] = useState(false);
 
@@ -25,7 +24,7 @@ const NriForm = () => {
   };
 
   return (
-    <div className="w-screen relative overflow-x-hidden h-screen flex p-20 justify-center bg-zinc-700">
+    <div className="w-screen relative overflow-x-hidden h-screen flex pt-20 justify-center bg-zinc-700">
       <ToastContainer
         transition={Zoom}
         hideProgressBar={true}
@@ -68,7 +67,7 @@ const NriForm = () => {
             {/* inner-2/3-vertical-partition */}
             <div className="w-full lg:w-2/3 p-4">
               {/* first-2/3-row-container */}
-              <label className="text-lg ml-3 italic">Full Name*</label>
+              <label className="text-md  ml-3 italic">Full Name*</label>
               <div className="w-full h-auto pb-2 space-y-2 lg:space-y-0 lg:space-x-3 lg:flex">
                 {/* divide-2/3-again-vertically-1/3 three times */}
                 <input
@@ -91,7 +90,7 @@ const NriForm = () => {
                 {/* second-2/3-row-container */}
                 <div className="lg:w-1/3 pt-2">
                   {/* split-vertically-1/3-and-2/3 */}
-                  <label className="text-lg ml-3 italic">Date of Birth*</label>
+                  <label className="text-md  ml-3 italic">Date of Birth*</label>
                   <input
                     placeholder=""
                     type="date"
@@ -99,43 +98,127 @@ const NriForm = () => {
                   />
                 </div>
                 <div className="lg:w-2/3 pt-2">
-                  <label className="text-lg ml-3 italic">Photo Upload*</label>
+                  <label className="text-md  ml-3 italic">Photo Upload*</label>
                   <input
-                   onChange={handleImageChange}
+                    onChange={handleImageChange}
                     placeholder=""
                     type="file"
                     className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
                   />
                   {InvalidImgFormat && (
-                        <p className="ml-3 text-red-700 font-mono text-center text-md font-bold italic">
-                          Unsupported Format
-                        </p>
-                      )}
+                    <p className="ml-3 text-red-700 font-mono text-center text-md font-bold italic">
+                      Unsupported Format
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
             <div className="lg:w-1/3 flex justify-center py-2 h-auto">
               <div className="flex rounded-md h-44 border-[3px] border-black">
-              {!ImagePreview || InvalidImgFormat ? (
-                <>
-                  <p className="text-center my-8 italic">
-                    Size:300-800kb
-                    <br />
-                    Resolution: 600x800
-                    <br />
-                    <u>Supported formats</u>
-                    <br />
-                    jpg,jpeg,png
-                  </p>
-                </>
-              ) : (
-                <img className="" src={ImagePreview}></img>
-              )}
+                {!ImagePreview || InvalidImgFormat ? (
+                  <>
+                    <p className="text-center my-8 italic">
+                      Size:300-800kb
+                      <br />
+                      Resolution: 600x800
+                      <br />
+                      <u>Supported formats</u>
+                      <br />
+                      jpg,jpeg,png
+                    </p>
+                  </>
+                ) : (
+                  <img className="" src={ImagePreview}></img>
+                )}
               </div>
             </div>
           </div>
 
-          <div className="w-full h-36 bg-gray-200 flex ">
+          <div className="w-full h-auto lg:flex ">
+            <div className="lg:w-1/2 p-2">
+              <div>
+                <label className="text-md  ml-3 italic">Contact Address*</label>
+                <input
+                  placeholder="House Name"
+                  type="text"
+                  className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                />
+              </div>
+              <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
+                <div className="lg:w-1/2">
+                  <label className="text-md  ml-3 italic">District*</label>
+                  <input
+                    placeholder="House Name"
+                    type="text"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                  />
+                </div>
+                <div className="lg:w-1/2">
+                  <label className="text-md  ml-3 italic">State*</label>
+                  <input
+                    placeholder="House Name"
+                    type="text"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                  />
+                </div>
+              </div>
+              <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
+                <div className="lg:w-1/2">
+                  <label className="text-md  ml-3 italic">City*</label>
+                  <input
+                    placeholder="City/Place"
+                    type="text"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                  />
+                </div>
+                <div className="lg:w-1/2">
+                  <label className="text-md  ml-3 italic">Pincode*</label>
+                  <input
+                    placeholder="xxxxxx"
+                    type="text"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2 p-2">
+              <div>
+                <label className="text-md  ml-3 italic">Name of Sponsor*</label>
+                <input
+                  placeholder="Full Name"
+                  type="text"
+                  className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                />
+              </div>
+              
+              <div className="py-2">
+                <label className="text-md  ml-3 italic">Relation with Applicant*</label>
+                <input
+                  placeholder="Father/Mother/First Blood relation"
+                  type="text"
+                  className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                />
+              </div>
+
+              <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
+                <div className="lg:w-1/2">
+                  <label className="text-md  ml-3 italic">Name of Parent/Guardian*</label>
+                  <input
+                    placeholder="Full Name"
+                    type="text"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                  />
+                </div>
+                <div className="lg:w-1/2">
+                  <label className="text-md  ml-3 italic">Occupation*</label>
+                  <input
+                    placeholder="Parent's Occupation"
+                    type="text"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                  />
+                </div>
+              </div>
+            </div>
             
           </div>
         </div>
@@ -144,12 +227,12 @@ const NriForm = () => {
   );
 };
 const str =
-  "After Registration we've send an email to your registered Email-ID" +
-  " use the credentials to Sign-In to your account, if you haven't " +
-  "received the mail ,do check your spam folder also " +
-  "Otherwise contact us";
-// setTimeout(() => {
-//   toast(str);
-// }, 3000);
+  "Consist of two parts" +
+  " complete one part and click SAVE to save changes " +
+  ",and proceed to next. Once two parts are completed " +
+  "Click on Final SUBMIT to complete ";
+setTimeout(() => {
+  toast(str);
+}, 3000);
 
 export default NriForm;
