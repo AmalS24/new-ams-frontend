@@ -10,15 +10,26 @@ const NriForm = () => {
   const [InvalidImgFormat, setInvalidImgFormat] = useState(false);
 
   const switchTab = (e) => {
-    if(e.target.id === "tab1")
+    const ID = e.target.id; 
+    const active_tab = "w-full border-t-[5px] items-center cursor-pointer flex justify-center bg-white border-pink-700";
+    const active_header = "text-pink-700 text-2xl"
+    const inactive_tab = "w-full hidden sm:flex border-b-[5px] items-center cursor-pointer justify-center border-pink-300";
+    const inactive_header = "text-pink-300 text-2xl"
+    if(ID === "tab1" || ID === "header1")
     {
+      document.getElementById("tab1").className = active_tab;
+      document.getElementById("header1").className = active_header
+      document.getElementById("tab2").className = inactive_tab;
+      document.getElementById("header2").className = inactive_header
       setCurrentTab(true)
-      console.log(CurrentTab);
     }
-    else if(e.target.id === "tab2")
+    else if(ID === "tab2" || ID === "header2")
     {
+      document.getElementById("tab2").className = active_tab;
+      document.getElementById("header2").className = active_header
+      document.getElementById("tab1").className = inactive_tab;
+      document.getElementById("header1").className = inactive_header
       setCurrentTab(false)
-      console.log(CurrentTab)
     }
   }
 
@@ -67,10 +78,10 @@ const NriForm = () => {
       >
         <div className="w-auto italic flex h-14">
           <div onClick={switchTab} id="tab1" className="w-full border-t-[5px] items-center cursor-pointer flex justify-center bg-white border-pink-700">
-            <p onClick={switchTab} id="tab1" className="text-pink-700 text-2xl">Personal Details</p>
+            <p onClick={switchTab} id="header1" className="text-pink-700 text-2xl">Personal Details</p>
           </div>
           <div onClick={switchTab} id="tab2" className="w-full hidden sm:flex border-b-[5px] items-center cursor-pointer justify-center border-pink-300">
-            <p onClick={switchTab} id="tab2" className="text-pink-300 text-2xl">Payment Details</p>
+            <p onClick={switchTab} id="header2" className="text-pink-300 text-2xl">Payment Details</p>
           </div>
         </div>
 
