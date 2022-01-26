@@ -5,6 +5,25 @@ import home from "../SvgIcons/home.svg";
 import help from "../SvgIcons/help.svg";
 
 const NriForm = () => {
+
+  const [ImagePreview, setImagePreview] = useState(null);
+  const [InvalidImgFormat, setInvalidImgFormat] = useState(false);
+
+  const handleImageChange = (e) => {
+    const selected = e.target.files[0];
+    const ALLOWED_TYPES = ["image/jpg", "image/jpeg", "image/png"];
+    if (selected && ALLOWED_TYPES.includes(selected.type)) {
+      setInvalidImgFormat(false);
+      let reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(selected);
+    } else {
+      setInvalidImgFormat(true);
+    }
+  };
+
   return (
     <div className="w-screen relative overflow-x-hidden h-screen flex p-20 justify-center bg-zinc-700">
       <ToastContainer
@@ -43,59 +62,82 @@ const NriForm = () => {
         </div>
 
         {/* main-container */}
-        <div className="w-full bg-white pt-8 h-auto space-y-2 p-4">
-          
+        <div className="w-full bg-white pt-4 h-auto space-y-2 p-4">
           {/* first-row-container */}
-          <div className="w-full h-auto bg-gray-200 flex ">
+          <div className="w-full h-auto lg:flex ">
             {/* inner-2/3-vertical-partition */}
-            <div className="w-full lg:w-2/3 space-y-2 bg-gray-300 ">
+            <div className="w-full lg:w-2/3 p-4">
               {/* first-2/3-row-container */}
-              <div className="w-full h-auto lg:space-x-2 bg-red-300 lg:flex">
+              <label className="text-lg ml-3 italic">Full Name*</label>
+              <div className="w-full h-auto pb-2 space-y-2 lg:space-y-0 lg:space-x-3 lg:flex">
                 {/* divide-2/3-again-vertically-1/3 three times */}
-                <div className="lg:w-1/3 bg-gray-100">
+                <input
+                  placeholder="First"
+                  type="text"
+                  className="h-10 w-full lg:w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                />
+                <input
+                  placeholder="Middle"
+                  type="text"
+                  className="h-10 lg:w-1/3 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                />
+                <input
+                  placeholder="Last"
+                  type="text"
+                  className="h-10 lg:w-1/3 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                />
+              </div>
+              <div className="w-full h-auto pb-1 lg:space-x-3 lg:flex">
+                {/* second-2/3-row-container */}
+                <div className="lg:w-1/3 pt-2">
+                  {/* split-vertically-1/3-and-2/3 */}
+                  <label className="text-lg ml-3 italic">Date of Birth*</label>
                   <input
-                    placeholder="Registration No."
-                    type="text"
-                    className="h-10 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                    placeholder=""
+                    type="date"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
                   />
                 </div>
-                <div className="lg:w-1/3  bg-gray-100">
+                <div className="lg:w-2/3 pt-2">
+                  <label className="text-lg ml-3 italic">Photo Upload*</label>
                   <input
-                    placeholder="Registration No."
-                    type="text"
-                    className="h-10 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                   onChange={handleImageChange}
+                    placeholder=""
+                    type="file"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
                   />
-                </div>
-                <div className="lg:w-1/3 bg-gray-100">
-                  <input
-                    placeholder="Registration No."
-                    type="text"
-                    className="h-10 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
-                  />
+                  {InvalidImgFormat && (
+                        <p className="ml-3 text-red-700 font-mono text-center text-md font-bold italic">
+                          Unsupported Format
+                        </p>
+                      )}
                 </div>
               </div>
-              <div className="w-full h-auto lg:space-x-2 bg-red-400 lg:flex">
-                {/* second-2/3-row-container */}
-                <div className="lg:w-1/3 bg-gray-100">
-                  {/* split-vertically-1/3-and-2/3 */}
-                  <input
-                    placeholder="Registration No."
-                    type="text"
-                    className="h-10 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
-                  />
-                </div>
-                <div className="lg:w-2/3 bg-gray-100">
-                  <input
-                    placeholder="Registration No."
-                    type="text"
-                    className="h-10 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
-                  />
-                </div>
+            </div>
+            <div className="lg:w-1/3 flex justify-center py-2 h-auto">
+              <div className="flex rounded-md h-44 border-[3px] border-black">
+              {!ImagePreview || InvalidImgFormat ? (
+                <>
+                  <p className="text-center my-8 italic">
+                    Size:300-800kb
+                    <br />
+                    Resolution: 600x800
+                    <br />
+                    <u>Supported formats</u>
+                    <br />
+                    jpg,jpeg,png
+                  </p>
+                </>
+              ) : (
+                <img className="" src={ImagePreview}></img>
+              )}
               </div>
             </div>
           </div>
 
-          <div className="w-full h-36 bg-gray-200 flex "></div>
+          <div className="w-full h-36 bg-gray-200 flex ">
+            
+          </div>
         </div>
       </form>
     </div>
