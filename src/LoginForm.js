@@ -4,6 +4,8 @@ import { ToastContainer, toast, Zoom } from "react-toastify";
 import home from "./Icons/home.svg";
 import help from "./Icons/help.svg";
 import ball from "./Icons/creative_ball.svg";
+import { Link,useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LoginForm = () => {
   const [ForgotPassword, setForgotPassword] = useState(false);
@@ -11,7 +13,7 @@ const LoginForm = () => {
     "We will resend the credentials back to your Registered email-Id";
   // const fail_string = "Sorry we couldn't find your Email-Id ,try again";
   // const success_string = "Credentials has been re-send to your email-id";
-  const str =
+  const str = 
     "After Registration we've send an email to your registered Email-ID" +
     " use the credentials to Sign-In to your account, if you haven't " +
     "received the mail ,do check your spam folder also " +
@@ -19,6 +21,36 @@ const LoginForm = () => {
   setTimeout(() => {
     toast(str);
   }, 3000);
+
+  const nav = useNavigate()
+
+  const Login =(e)=>{
+    e.preventDefault()
+    const data = {
+      applicationNo:document.getElementById("userID").value,
+      password     :document.getElementById("password").value,
+    }
+    axios
+      .post("https://ams-backend-api.herokuapp.com/user/login",data)
+      .then((response) => {
+        if(response.status === 200)
+        {
+          toast.success("Login success")
+          localStorage.setItem("access_token", response.data.token);
+          console.log(response,localStorage.getElementById("access_token"))
+          nav("/NRIapplication")
+        }
+        else
+          toast.error("Invalid UserID or Password")
+      })
+      .catch((response)=>{
+        if (response.status === 400) {
+          Error(toast.error("invalid user name or password"));
+          console.log("error", response);
+        }
+      })
+      console.log(data)
+  }
 
   return (
     <div className="w-screen relative overflow-x-hidden h-screen flex items-center justify-center bg-zinc-700">
@@ -32,7 +64,9 @@ const LoginForm = () => {
         closeOnClick={true}
       />
       <div className="w-full top-1 h-14 absolute z-20 flex items-center justify-between px-8">
+        <Link to="/">
         <img src={home} alt="home" className="w-8 h-8 cursor-pointer" />
+        </Link>
         <img
           onClick={() => {
             toast(str);
@@ -80,6 +114,7 @@ const LoginForm = () => {
       ) : (
         <form
           action=""
+          onSubmit={Login}
           className="w-80 sm:w-96 p-4 sm:p-8  h-96 absolute z-20 shadow-xl rounded-sm shadow-zinc-900 bg-white"
         >
           <p className="text-4xl mt-3 text-center sm:font-semibold">SIGN-IN</p>
@@ -87,14 +122,17 @@ const LoginForm = () => {
             <input
               placeholder="Registration No."
               type="text"
+              id="userID"
               className="h-12 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
             />
             <input
               placeholder="Password"
               type="text"
+              id="password"
               className="h-12 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
             />
-            <button className="w-auto px-4 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800 h-12">
+            <button 
+            className="w-auto px-4 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800 h-12">
               Sign-In
             </button>
           </div>

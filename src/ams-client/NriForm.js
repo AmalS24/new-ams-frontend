@@ -4,6 +4,7 @@ import { ToastContainer, toast, Zoom } from "react-toastify";
 
 import home from "../Icons/home.svg";
 import help from "../Icons/help.svg";
+import { Link } from "react-router-dom";
 
 const NriForm = () => {
   const [CurrentTab, setCurrentTab] = useState(true);
@@ -57,6 +58,10 @@ setTimeout(() => {
     }
   };
 
+  const logout=()=>{
+    localStorage.removeItem("access_token")
+  }
+
   return (
     <div className="w-screen relative overflow-x-hidden h-screen flex pt-20 xl:pt-12 justify-center bg-zinc-700">
       <ToastContainer
@@ -69,7 +74,11 @@ setTimeout(() => {
         closeOnClick={true}
       />
       <div className="w-full top-1 h-14 absolute z-20 flex items-center justify-between px-8">
-        <img src={home} alt="home" className="w-8 h-8 cursor-pointer" />
+        <button onClick={logout}>
+          <Link to="/">
+          <img src={home} alt="home" className="w-8 h-8 cursor-pointer" />
+          </Link>
+        </button>
 
         <img
           onClick={() => {
@@ -91,7 +100,7 @@ setTimeout(() => {
           </div>
           <div onClick={switchTab} id="tab2" className="w-full hidden sm:flex border-b-[5px] items-center cursor-pointer justify-center border-pink-300">
             <p onClick={switchTab} id="header2" className="text-pink-300 text-2xl">Payment Details</p>
-          </div>
+          </div> 
         </div>
 
         {CurrentTab ? (
