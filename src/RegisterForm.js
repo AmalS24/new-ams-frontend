@@ -43,9 +43,9 @@ const RegisterForm = () => {
         console.log(data,Response)
         switch (Response.status) {
           case 200:
+            nav("/login")
             toast.success("Registration Successful ");
             setLoading(false);
-            nav("/login")
             break;
           case 204:
             setLoading(false);

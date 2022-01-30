@@ -6,6 +6,7 @@ import help from "./Icons/help.svg";
 import ball from "./Icons/creative_ball.svg";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loader from "./components/Loader";
 
 const LoginForm = () => {
   const [ForgotPassword, setForgotPassword] = useState(false);
@@ -23,9 +24,11 @@ const LoginForm = () => {
   }, 3000);
 
   const nav = useNavigate()
+  const [loading,setLoading] = useState(false);
 
   const Login =(e)=>{
     e.preventDefault()
+    setLoading(true)
     const data = {
       applicationNo:document.getElementById("userID").value,
       password     :document.getElementById("password").value,
@@ -33,17 +36,19 @@ const LoginForm = () => {
     axios
       .post("https://ams-backend-api.herokuapp.com/user/login",data)
       .then((response) => {
+        setLoading(false)
         if(response.status === 200)
         {
+          nav("/NRIapplication")
           toast.success("Login success")
           localStorage.setItem("access_token", response.data.token);
           console.log(response,localStorage.getElementById("access_token"))
-          nav("/NRIapplication")
         }
         else
           toast.error("Invalid UserID or Password")
       })
       .catch((response)=>{
+        setLoading(false)
         if (response.status === 400) {
           Error(toast.error("invalid user name or password"));
           console.log("error", response);
@@ -51,7 +56,9 @@ const LoginForm = () => {
       })
       console.log(data)
   }
-
+  if(loading)
+    return(<Loader/>)
+  else
   return (
     <div className="w-screen relative overflow-x-hidden h-screen flex items-center justify-center bg-zinc-700">
       <ToastContainer

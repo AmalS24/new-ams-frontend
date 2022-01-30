@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Home() {
+function AMS() {
   return (
       <div className='bg-gray-300 flex flex-col space-y-4'>
          <Link to="/registration">
@@ -14,5 +14,5 @@ function Home() {
   )
 }
 
-export default Home;
+export default AMS;
 
