@@ -21,7 +21,7 @@ const App = () => {
       {/* <RegisterForm /> */}
       {/* <LoginForm /> */}
       {/* <NriForm /> */}
-    </> 
+    </>
   );
 };
 
