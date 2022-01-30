@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, Zoom } from "react-toastify";
-import doodle_background from "../SvgIcons/doodle.svg";
 
-import home from "../SvgIcons/home.svg";
-import help from "../SvgIcons/help.svg";
+import doodle_background from "./Icons/doodle.svg";
+import home from "./Icons/home.svg";
+import help from "./Icons/help.svg";
 
 const RegisterForm = () => {
   const str =

@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, Zoom } from "react-toastify";
-import home from "../SvgIcons/home.svg";
-import help from "../SvgIcons/help.svg";
+
+import home from "../Icons/home.svg";
+import help from "../Icons/help.svg";
 
 const NriForm = () => {
   const [CurrentTab, setCurrentTab] = useState(true);
   const [ImagePreview, setImagePreview] = useState(null);
   const [InvalidImgFormat, setInvalidImgFormat] = useState(false);
+  const info =
+  "Consist of two parts" +
+  " complete one part and click SAVE to save changes " +
+  ",and proceed to next. Once two parts are completed " +
+  "Click on Final SUBMIT to complete ";
+setTimeout(() => {
+  toast(info);
+}, 3000);
 
   const switchTab = (e) => {
     const ID = e.target.id; 
@@ -49,14 +58,14 @@ const NriForm = () => {
   };
 
   return (
-    <div className="w-screen relative overflow-x-hidden h-screen flex pt-20 justify-center bg-zinc-700">
+    <div className="w-screen relative overflow-x-hidden h-screen flex pt-20 xl:pt-12 justify-center bg-zinc-700">
       <ToastContainer
         transition={Zoom}
         hideProgressBar={true}
         autoClose={10000}
         limit={1}
         className="mt-12"
-        bodyClassName="text-sm md:text-md text-black"
+        bodyClassName="text-black"
         closeOnClick={true}
       />
       <div className="w-full top-1 h-14 absolute z-20 flex items-center justify-between px-8">
@@ -89,7 +98,7 @@ const NriForm = () => {
           <div className="w-full bg-white pt-4 h-auto space-y-2 p-4">
             <div className="w-full h-auto lg:flex ">
               <div className="w-full lg:w-2/3 p-4">
-                <label className="text-md  ml-3 italic">Full Name*</label>
+                <label className="text-lg  ml-3 italic">Full Name*</label>
                 <div className="w-full h-auto pb-2 space-y-2 lg:space-y-0 lg:space-x-3 lg:flex">
                   <input
                     placeholder="First"
@@ -109,7 +118,7 @@ const NriForm = () => {
                 </div>
                 <div className="w-full h-auto pb-1 lg:space-x-3 lg:flex">
                   <div className="lg:w-1/3 pt-2">
-                    <label className="text-md  ml-3 italic">
+                    <label className="text-lg  ml-3 italic">
                       Date of Birth*
                     </label>
                     <input
@@ -119,7 +128,7 @@ const NriForm = () => {
                     />
                   </div>
                   <div className="lg:w-2/3 pt-2">
-                    <label className="text-md  ml-3 italic">
+                    <label className="text-lg  ml-3 italic">
                       Photo Upload*
                     </label>
                     <input
@@ -129,7 +138,7 @@ const NriForm = () => {
                       className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
                     />
                     {InvalidImgFormat && (
-                      <p className="ml-3 text-red-700 font-mono text-center text-md font-bold italic">
+                      <p className="ml-3 text-red-700 font-mono text-center text-lg font-bold italic">
                         Unsupported Format
                       </p>
                     )}
@@ -151,7 +160,7 @@ const NriForm = () => {
                       </p>
                     </>
                   ) : (
-                    <img className="" src={ImagePreview}></img>
+                    <img className="" alt="profile" src={ImagePreview}></img>
                   )}
                 </div>
               </div>
@@ -160,7 +169,7 @@ const NriForm = () => {
             <div className="w-full h-auto lg:flex ">
               <div className="lg:w-1/2 p-2">
                 <div>
-                  <label className="text-md  ml-3 italic">
+                  <label className="text-lg  ml-3 italic">
                     Contact Address*
                   </label>
                   <input
@@ -171,7 +180,7 @@ const NriForm = () => {
                 </div>
                 <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
                   <div className="lg:w-1/2">
-                    <label className="text-md  ml-3 italic">District*</label>
+                    <label className="text-lg  ml-3 italic">District*</label>
                     <input
                       placeholder="House Name"
                       type="text"
@@ -179,7 +188,7 @@ const NriForm = () => {
                     />
                   </div>
                   <div className="lg:w-1/2">
-                    <label className="text-md  ml-3 italic">State*</label>
+                    <label className="text-lg  ml-3 italic">State*</label>
                     <input
                       placeholder="House Name"
                       type="text"
@@ -189,7 +198,7 @@ const NriForm = () => {
                 </div>
                 <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
                   <div className="lg:w-1/2">
-                    <label className="text-md  ml-3 italic">City*</label>
+                    <label className="text-lg  ml-3 italic">City*</label>
                     <input
                       placeholder="City/Place"
                       type="text"
@@ -197,7 +206,7 @@ const NriForm = () => {
                     />
                   </div>
                   <div className="lg:w-1/2">
-                    <label className="text-md  ml-3 italic">Pincode*</label>
+                    <label className="text-lg  ml-3 italic">Pincode*</label>
                     <input
                       placeholder="xxxxxx"
                       type="text"
@@ -208,7 +217,7 @@ const NriForm = () => {
               </div>
               <div className="lg:w-1/2 p-2">
                 <div>
-                  <label className="text-md  ml-3 italic">
+                  <label className="text-lg  ml-3 italic">
                     Name of Sponsor*
                   </label>
                   <input
@@ -219,7 +228,7 @@ const NriForm = () => {
                 </div>
 
                 <div className="py-2">
-                  <label className="text-md  ml-3 italic">
+                  <label className="text-lg  ml-3 italic">
                     Relation with Applicant*
                   </label>
                   <input
@@ -231,7 +240,7 @@ const NriForm = () => {
 
                 <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
                   <div className="lg:w-1/2">
-                    <label className="text-md  ml-3 italic">
+                    <label className="text-lg  ml-3 italic">
                       Name of Parent/Guardian*
                     </label>
                     <input
@@ -241,7 +250,7 @@ const NriForm = () => {
                     />
                   </div>
                   <div className="lg:w-1/2">
-                    <label className="text-md  ml-3 italic">Occupation*</label>
+                    <label className="text-lg  ml-3 italic">Occupation*</label>
                     <input
                       placeholder="Parent's Occupation"
                       type="text"
@@ -259,13 +268,6 @@ const NriForm = () => {
     </div>
   );
 };
-const info =
-  "Consist of two parts" +
-  " complete one part and click SAVE to save changes " +
-  ",and proceed to next. Once two parts are completed " +
-  "Click on Final SUBMIT to complete ";
-setTimeout(() => {
-  toast(info);
-}, 3000);
+
 
 export default NriForm;

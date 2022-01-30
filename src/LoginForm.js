@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, Zoom } from "react-toastify";
-import ball from "../SvgIcons/creative_ball.svg";
-import home from "../SvgIcons/home.svg";
-import help from "../SvgIcons/help.svg";
+import home from "./Icons/home.svg";
+import help from "./Icons/help.svg";
+import ball from "./Icons/creative_ball.svg";
 
 const LoginForm = () => {
   const [ForgotPassword, setForgotPassword] = useState(false);
-  const default_string = "We will resend the credentials back to your Registered email-Id"
-  const fail_string = "Sorry we couldn't find your Email-Id ,try again"
-  const success_string = "Credentials has been re-send to your email-id"
+  const default_string =
+    "We will resend the credentials back to your Registered email-Id";
+  // const fail_string = "Sorry we couldn't find your Email-Id ,try again";
+  // const success_string = "Credentials has been re-send to your email-id";
+  const str =
+    "After Registration we've send an email to your registered Email-ID" +
+    " use the credentials to Sign-In to your account, if you haven't " +
+    "received the mail ,do check your spam folder also " +
+    "Otherwise contact us";
+  setTimeout(() => {
+    toast(str);
+  }, 3000);
+
   return (
     <div className="w-screen relative overflow-x-hidden h-screen flex items-center justify-center bg-zinc-700">
       <ToastContainer
@@ -18,7 +28,7 @@ const LoginForm = () => {
         autoClose={10000}
         limit={1}
         className="mt-12"
-        bodyClassName="text-sm md:text-md text-black"
+        bodyClassName="text-black"
         closeOnClick={true}
       />
       <div className="w-full top-1 h-14 absolute z-20 flex items-center justify-between px-8">
@@ -46,9 +56,9 @@ const LoginForm = () => {
             Forgot Password
           </p>
           <div className="w-full mt-5 space-y-7 p-2 h-auto ">
-            <p
-              className="h-auto text-center w-full border-[2px] text-pink-700 bg-pink-50 rounded-md p-3 text-md border-pink-700 italic "
-            >{default_string}</p>
+            <p className="h-auto text-center w-full border-[2px] text-pink-700 bg-pink-50 rounded-md p-3 text-md border-pink-700 italic ">
+              {default_string}
+            </p>
             <input
               placeholder="Registered Email-ID"
               type="email"
@@ -101,12 +111,5 @@ const LoginForm = () => {
     </div>
   );
 };
-const str =
-  "After Registration we've send an email to your registered Email-ID" +
-  " use the credentials to Sign-In to your account, if you haven't " +
-  "received the mail ,do check your spam folder also " +
-  "Otherwise contact us";
-setTimeout(() => {
-  toast(str);
-}, 3000);
+
 export default LoginForm;

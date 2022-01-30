@@ -1,7 +1,7 @@
 import React from "react";
-import LoginForm from "./Components/LoginForm";
-import NriForm from "./Components/NriForm";
-import RegisterForm from "./Components/RegisterForm";
+import LoginForm from "./LoginForm";
+import NriForm from "./ams-client/NriForm";
+import RegisterForm from "./RegisterForm";
 
 const App = () => {
   return (
