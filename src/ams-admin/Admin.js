@@ -8,7 +8,6 @@ import SearchPage from "./Pages/SearchPage.js";
 const Admin = () => {
   return (
     <div className="w-screen h-screen flex items-center p-6 justify-center bg-slate-300">
-      <BrowserRouter>
         <Navbar />
         <div className="w-5/6 flex space-y-4 flex-col p-4 h-full">
           <TitleBar />
@@ -17,7 +16,6 @@ const Admin = () => {
             <Route path="/search" element={<SearchPage />} />
           </Routes>
         </div>
-      </BrowserRouter>
     </div>
   );
 };

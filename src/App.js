@@ -13,14 +13,16 @@ const App = () => {
   return (
     <>
 
-    <Routes>
+    {/* <Routes>
       <Route path="/" element={<AMS/>}/>
       <Route path="/registration" element={<RegisterForm/>}/>
       <Route path="/login" element={<LoginForm/>}/>
       {access ? <Route path="/NRIapplication" element={<NriForm/>}/> : <Route path="/NRIapplication" element={<NotFound/>}/>}
-    </Routes>
+      
+    </Routes> */}
+    <Admin />
       {/* <Home/> */}
-      {/* <Admin /> */}
+      
       {/* <RegisterForm /> */}
       {/* <LoginForm /> */}
       {/* <NriForm /> */}
