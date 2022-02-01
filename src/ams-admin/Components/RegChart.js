@@ -11,7 +11,7 @@ import {
   LineElement,
   RadialLinearScale,
 } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import { Bar, Bubble, Doughnut, Line, Pie, PolarArea, Radar } from "react-chartjs-2";
 
 ChartJS.register(
   RadialLinearScale,
@@ -27,17 +27,18 @@ ChartJS.register(
 
 const RegChart = () => {
   const data = {
-    labels: ["CSE","CE","ME","EEE","ECE"],
+    labels: ["CSE","CSE-AI","CE","ME","EEE","ECE"],
     datasets: [
       {
-        label: "Registration Data",
-        data: [200, 210, 150, 450, 100],
+        label: "Registration's",
+        data: [310, 120, 210, 150, 350, 280],
         backgroundColor: [
           "rgb(255, 99, 132)",
           "rgb(75, 192, 192)",
           "rgb(255, 205, 86)",
           "rgb(201, 203, 207)",
           "rgb(54, 162, 235)",
+          "rgb(125,97,186)",
         ],
         hoverOffset: 4,
       },
@@ -45,6 +46,7 @@ const RegChart = () => {
   };
   var options = {
     maintainAspectRatio: false,
+    responsive: true,
     scales: {
       xAxes: {
         display: true,
@@ -61,8 +63,8 @@ const RegChart = () => {
   };
 
   return (
-    <div>
-      <Doughnut data={data} height={400} options={options} />
+    <div className=""> 
+      <Doughnut data={data} responsive={true} height={400} options={options} />  
     </div>
   );
 };
