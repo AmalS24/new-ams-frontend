@@ -14,11 +14,7 @@ const RegisterForm = () => {
     "Provide the necessary details to complete registration"+
     " (Fields with * are mandatory). After registration check "+
     "your registered email for the sign in credentials ";
-
-    setTimeout(() => {
-      toast(str)
-    }, 3000);
-
+    
     const [loading,setLoading] = useState(false)
     const nav = useNavigate()
 

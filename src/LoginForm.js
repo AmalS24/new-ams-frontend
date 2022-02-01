@@ -19,9 +19,6 @@ const LoginForm = () => {
     " use the credentials to Sign-In to your account, if you haven't " +
     "received the mail ,do check your spam folder also " +
     "Otherwise contact us";
-  setTimeout(() => {
-    toast(str);
-  }, 3000);
 
   const nav = useNavigate()
   const [loading,setLoading] = useState(false);

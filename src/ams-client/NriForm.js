@@ -15,9 +15,7 @@ const NriForm = () => {
   " complete one part and click SAVE to save changes " +
   ",and proceed to next. Once two parts are completed " +
   "Click on Final SUBMIT to complete ";
-setTimeout(() => {
-  toast(info);
-}, 3000);
+
 
   const switchTab = (e) => {
     const ID = e.target.id; 

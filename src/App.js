@@ -20,7 +20,7 @@ const App = () => {
       {access ? <Route path="/NRIapplication" element={<NriForm/>}/> : <Route path="/NRIapplication" element={<NotFound/>}/>}
     </Routes>
       {/* <Home/> */}
-      <Admin />
+      {/* <Admin /> */}
       {/* <RegisterForm /> */}
       {/* <LoginForm /> */}
       {/* <NriForm /> */}
