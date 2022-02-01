@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TitleBar = () => {
   return (
@@ -32,11 +33,13 @@ const TitleBar = () => {
         alt="log-out"
         className="ml-6 w-6 h-6"
       />
+      <Link to="/login" onClick={localStorage.removeItem("admin_access_token")}>
       <img
         src="https://cdn-icons-png.flaticon.com/512/402/402593.png"
         alt="log-out"
         className="ml-6 w-6 h-6"
       />
+      </Link>
       </div>
     </div>
   );

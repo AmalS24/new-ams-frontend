@@ -30,7 +30,15 @@ const LoginForm = () => {
       applicationNo:document.getElementById("userID").value,
       password     :document.getElementById("password").value,
     }
-    axios
+    if(data.applicationNo === "admin")
+    {
+      localStorage.setItem("admin_access_token","aaaa")
+      nav("/admin")
+      window.location.reload()
+    }
+    else
+    {
+      axios
       .post("https://ams-backend-api.herokuapp.com/user/login",data)
       .then((response) => {
         setLoading(false)
@@ -53,6 +61,7 @@ const LoginForm = () => {
           console.log("error", response);
         }
       })
+    }
       console.log(data)
   }
   if(loading)
