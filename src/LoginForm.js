@@ -39,6 +39,8 @@ const LoginForm = () => {
           nav("/NRIapplication")
           toast.success("Login success")
           localStorage.setItem("access_token", response.data.token);
+          localStorage.setItem("user_id",data.applicationNo)
+          window.location.reload()
           console.log(response,localStorage.getElementById("access_token"))
         }
         else
