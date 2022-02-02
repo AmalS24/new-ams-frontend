@@ -64,7 +64,7 @@ const RegChart = () => {
 
   return (
     <div className=""> 
-      <Doughnut data={data} responsive={true} height={400} options={options} />  
+      <Bar data={data} responsive={true} height={400} options={options} />  
     </div>
   );
 };

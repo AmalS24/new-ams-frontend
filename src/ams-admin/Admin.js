@@ -6,8 +6,8 @@ import HomePage from "./Pages/HomePage.js";
 import SearchPage from "./Pages/SearchPage.js";
 
 const Admin = () => {
-  const open = "w-full bg-zinc-800 z-10 bg-opacity-90 sm:bg-opacity-100  fixed xl:relative sm:rounded-md xl:w-1/6 p-2 h-screen"
-  const close = "bg-zinc-800 hidden xl:flex  fixed xl:relative sm:rounded-md xl:w-1/6 p-2 h-full"
+  const open = "w-full bg-zinc-800 z-10 bg-opacity-90 xl:bg-opacity-100  fixed xl:relative xl:rounded-md xl:w-1/6 p-2 h-screen"
+  const close = "bg-zinc-800 hidden xl:flex  fixed xl:relative xl:rounded-md xl:w-1/6 p-2 h-full"
   const [toggleBar,setToggleBar] = useState(close);
   const closeNavBar = (e) => {
     setToggleBar(close)

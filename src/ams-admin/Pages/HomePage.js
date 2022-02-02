@@ -4,7 +4,7 @@ import RegChart from "../Components/RegChart.js";
 const HomePage = () => {
   
   return (
-    <div className="w-full p-1 sm:h-full 2xl:p-4 space-y-6 xl:space-y-0 xl:space-x-6 flex flex-col xl:flex-row ">
+    <div className="w-full pb-6 xl:p-1 sm:h-full 2xl:p-4 space-y-6 xl:space-y-0 xl:space-x-6 flex flex-col xl:flex-row ">
       <div className="w-full xl:w-1/2 h-full flex flex-col items-center justify-center shadow-xl bg-white rounded-md">
         <p className="text-center font-semibold 2xl:text-4xl my-3 2xl:mb-6 sm:text-3xl text-xl">
           Registration Statistics
@@ -42,19 +42,19 @@ const HomePage = () => {
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">{986-575}</p>
           </div>
         </div>
-         <div className="sm:h-1/3 w-full flex flex-col sm:flex-row border-l-[8px] space-y-6 sm:space-y-0 bg-white py-6 sm:p-0 border-black">
-          <div className="sm:w-1/3 h-full flex flex-col items-center justify-center bg-white">
-            <p className="text-center text-bold uppercase text-3xl sm:text-4xl">NRI</p>
+         <div className="sm:h-1/3 w-full flex flex-row border-l-[8px] bg-white py-3 sm:p-0 border-black">
+          <div className="w-1/3 h-full flex flex-col items-center justify-center bg-white">
+            <p className="text-center text-bold uppercase text-2xl sm:text-4xl">NRI</p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">123</p>
           </div>
-          <div className="sm:w-1/3 h-full flex flex-col  items-center justify-center bg-white ">
-            <p className="text-center text-bold uppercase text-3xl sm:text-4xl">Mgmt</p>
+          <div className="w-1/3 h-full flex flex-col  items-center justify-center bg-white ">
+            <p className="text-center text-bold uppercase text-2xl sm:text-4xl">Mgmt</p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
               1385
             </p>
           </div>
-          <div className="sm:w-1/3 h-full flex flex-col items-center justify-center bg-white ">
-            <p className="text-center text-bold uppercase text-3xl sm:text-4xl">gov</p>
+          <div className="w-1/3 h-full flex flex-col items-center justify-center bg-white ">
+            <p className="text-center text-bold uppercase text-2xl sm:text-4xl">gov</p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
               {2345 - (123 + 385)}
             </p>
