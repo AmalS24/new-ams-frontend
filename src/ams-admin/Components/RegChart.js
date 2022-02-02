@@ -46,7 +46,6 @@ const RegChart = () => {
   };
   var options = {
     maintainAspectRatio: false,
-    responsive: true,
     scales: {
       xAxes: {
         display: true,
@@ -64,7 +63,7 @@ const RegChart = () => {
 
   return (
     <div className=""> 
-      <Bar data={data} responsive={true} height={400} options={options} />  
+      <Bar  data={data} height={400} options={options} />  
     </div>
   );
 };
