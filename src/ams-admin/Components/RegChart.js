@@ -11,7 +11,7 @@ import {
   LineElement,
   RadialLinearScale,
 } from "chart.js";
-import { Bar, Bubble, Doughnut, Line, Pie, PolarArea, Radar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
   RadialLinearScale,

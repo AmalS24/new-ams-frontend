@@ -1,6 +1,7 @@
 import React from "react";
 import RegChart from "../Components/RegChart.js";
 
+
 const HomePage = () => {
   
   return (

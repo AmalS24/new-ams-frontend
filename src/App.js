@@ -13,14 +13,13 @@ const App = () => {
   const admin_access = localStorage.getItem("admin_access_token")
   return (
     <>
-{/* 
-    <Routes>
+    {/* <Routes>
       <Route path="/"  element={<AMS/>}/>
       <Route path="/registration" element={<RegisterForm/>}/>
       <Route path="/login" element={<LoginForm/>}/>
       {access ? <Route path="/NRIapplication" element={<NriForm/>}/> : <Route path="/NRIapplication" element={<NotFound/>}/>}
       {admin_access ? <Route path="/admin" element={<Admin/>}/> : <Route path="/admin" element={<NotFound/>}/>}
-    </Routes> */}
+    </Routes>  */}
     <Admin />
       {/* <Home/> */}
       
