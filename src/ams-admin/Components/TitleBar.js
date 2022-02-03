@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TitleBar = (props) => {
   return (
-    <div className="w-full sm:h-16 rounded-md flex justify-between p-3 sm:px-8 items-center bg-white shadow-xl ">
+    <div className="w-full  sm:h-16 rounded-md flex justify-between p-3 sm:px-8 items-center bg-white shadow-xl ">
       <div className="flex w-auto">
         <p className="text-lg hidden xl:flex  italic">Registration Status: </p>
         <svg

@@ -8,6 +8,7 @@ import { Route,Routes } from "react-router-dom";
 import Admin from "./ams-admin/Admin";
 
 
+
 const App = () => {
   const access = localStorage.getItem("access_token")
   const admin_access = localStorage.getItem("admin_access_token")
@@ -22,7 +23,6 @@ const App = () => {
     </Routes>  */}
     <Admin />
       {/* <Home/> */}
-      
       {/* <RegisterForm /> */}
       {/* <LoginForm /> */}
       {/* <NriForm /> */}

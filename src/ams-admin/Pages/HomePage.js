@@ -14,7 +14,7 @@ const HomePage = () => {
           <RegChart />
         </div>
       </div>
-      <div className=" w-full xl:w-1/2 h-full flex flex-col  space-y-6">
+      <div className=" w-full xl:w-1/2 h-auto flex flex-col  space-y-6">
         <div className="h-1/3 w-full flex space-x-2 sm:space-x-5 ">
           <div className="w-1/2 py-3 sm:py-0 h-full flex flex-col items-center justify-center bg-white border-l-[8px] border-black">
             <p className="text-center text-bold uppercase text-2xl sm:text-4xl">Total</p>
@@ -22,7 +22,7 @@ const HomePage = () => {
               2345
             </p>
           </div>
-          <div className="w-1/2 h-full flex flex-col items-center justify-center bg-white border-l-[8px] border-black">
+          <div className="w-1/2 h-auto flex flex-col items-center justify-center bg-white border-l-[8px] border-black">
             <p className="text-center text-bold uppercase text-xl sm:text-3xl">
               completed
             </p>
@@ -36,7 +36,7 @@ const HomePage = () => {
             575
             </p>
           </div>
-          <div className="w-1/2 h-full flex flex-col items-center justify-center bg-white border-l-[8px] border-black">
+          <div className="w-1/2 h-auto flex flex-col items-center justify-center bg-white border-l-[8px] border-black">
             <p className="text-center text-bold uppercase text-xl sm:text-3xl">
             Unverified
             </p>

@@ -5,7 +5,7 @@ const Navbar = (props) => {
   
   return (
     <div id="bar" className={props.data}>
-      <div className="w-full h-full flex flex-col items-center justify-center space-y-8 text-lg sm:text-2xl  xl:text-lg rounded-md">
+      <div className="w-full h-full absolute xl:relative flex flex-col items-center justify-center space-y-8 text-lg sm:text-2xl  xl:text-lg xl:rounded-md">
         <Link onClick={props.onToggle} to="/home" className="text-white   hover:scale-110  italic ">
           Home
         </Link>

@@ -17,6 +17,7 @@ const SearchPage = () => {
         dob :  minifaker.arrayElement(['21-02-2000','20-11-2000','11-02-2001']),
         quota : minifaker.arrayElement(['NRI','MGMT','Gov']),
         pgm : minifaker.arrayElement(['Btech','Mtech']),
+        phone : minifaker.phoneNumber({locale : 'en'})
     
       }
   }
@@ -43,23 +44,17 @@ const SearchPage = () => {
       title:'Program',field:'pgm'
     },
     {
-      title:'Program',field:'pgm'
-    },
-    {
-      title:'Program',field:'pgm'
-    },
-    {
-      title:'Program',field:'pgm'
+      title:'Phone',field:'phone'
     },
     {
       title:'Email',field:'email'
     }
   ]
-  return <div className=" w-full h-[800px] p-2">
+  return <div className="min-w-screen w-[350px] sm:w-auto h-full bg-slate-800 rounded-md p-1">
     <MaterialTable 
     style={{
       width: 'auto',
-      height: 'auto',
+      height: '100%',
       padding: '1rem'
     }}
     title='Registrations'
@@ -68,7 +63,7 @@ const SearchPage = () => {
     options={{
       exportButton : true,
       tableLayout : 'fixed',
-      maxBodyHeight : 500,
+      maxBodyHeight: 400,
       paging: false,
       filtering : true,
     }}
