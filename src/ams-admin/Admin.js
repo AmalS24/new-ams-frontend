@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar.js";
 import TitleBar from "./Components/TitleBar.js";
 import HomePage from "./Pages/HomePage.js";
-import SearchPage from "./Pages/SearchPage.js";
+import TableDemo from "./Pages/TableDemo.js";
 
 const Admin = () => {
   const open = "w-screen h-screen top-0 bg-zinc-800 z-20 bg-opacity-90 xl:bg-opacity-100 fixed xl:relative xl:rounded-md xl:w-1/6 p-2 "
@@ -23,7 +23,7 @@ const Admin = () => {
           <TitleBar onToggle={openNavBar} />
           <Routes>
             <Route path="/home" element={<HomePage />} />
-            <Route path="/search" element={<SearchPage />} />
+            <Route path="/search" element={<TableDemo />} />
           </Routes>
         </div>
     </div>
