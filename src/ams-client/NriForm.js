@@ -8,40 +8,67 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const NriForm = () => {
-  const access = localStorage.getItem("access_token");
-  const user = localStorage.getItem("user_id");
-  const api = "https://ams-backend-api.herokuapp.com/user/application";
+
+  const access = localStorage.getItem("access_token")
+  const user = localStorage.getItem("user_id")
+  const api = "https://ams-backend-api.herokuapp.com/user/nri/application"
   const history = useNavigate();
   const [submitForm, setSubmitForm] = useState({});
   useEffect(() => {
     //Runs only on the first render
-    axios.post(api, { token: access }).then(function (response) {
-      submitForm.fname = response.data.user.firstName;
-      submitForm.mname = response.data.user.middleName;
-      submitForm.lname = response.data.user.lastName;
-      submitForm.dob = response.data.user.dob;
-      submitForm.phousename = response.data.user.permanentAddress.addressL1;
-      submitForm.pcity = response.data.user.permanentAddress.city;
-      submitForm.pstate = response.data.user.permanentAddress.state;
-      submitForm.pdistrict = response.data.user.permanentAddress.district;
-      submitForm.ppin = response.data.user.permanentAddress.pincode;
-      submitForm.phone1 = response.data.user.aPhone;
-      submitForm.phone2 = response.data.user.phone;
-      submitForm.parentName = response.data.user.guardianDetails.name;
-      submitForm.sponser = response.data.user.NRIdetails.name;
-      submitForm.occupation = response.data.user.fatherDetails.occupation;
-      submitForm.relationWithApplicant =
-        response.data.user.guardianDetails.relation;
-      submitForm.transactionId = response.data.user.transactionID;
-      submitForm.branch = response.data.user.bp1;
-      setCurrentTab(false);
-      setCurrentTab(true);
-      console.log(response, user);
-    });
-  }, []);
-  const handleChange = (e) => {
-    const { value, id } = e.target;
-    const newForm = { ...submitForm };
+    // axios.post(api,{token:access}).then(function (response) {
+    //   submitForm.fname                 = response.data.user.firstName
+    //   submitForm.mname                 = response.data.user.middleName
+    //   submitForm.lname                 = response.data.user.lastName
+    //   submitForm.dob                   = response.data.user.dob
+    //   submitForm.phousename            = response.data.user.permanentAddress.addressL1
+    //   submitForm.pcity                 = response.data.user.permanentAddress.city
+    //   submitForm.pstate                = response.data.user.permanentAddress.state
+    //   submitForm.pdistrict             = response.data.user.permanentAddress.district
+    //   submitForm.ppin                  = response.data.user.permanentAddress.pincode
+    //   submitForm.phone1                = response.data.user.aPhone
+    //   submitForm.phone2                = response.data.user.phone
+    //   submitForm.parentName            = response.data.user.guardianDetails.name
+    //   submitForm.sponser               = response.data.user.NRIdetails.name
+    //   submitForm.occupation            = response.data.user.fatherDetails.occupation
+    //   submitForm.relationWithApplicant = response.data.user.guardianDetails.relation
+    //   submitForm.transactionId         = response.data.user.transactionID
+    //   submitForm.branch                = response.data.user.bp1
+    //   setCurrentTab(false)
+    //   setCurrentTab(true)
+    //   console.log(response,user)  
+    //   })
+    axios.get(api,{
+      headers:{
+        Authorization:"Bearer "+access,
+      }
+    }).then(res=>{
+      console.log(res.data)
+      submitForm.fname = res.data.firstName
+      submitForm.mname = res.data.middleName
+      submitForm.lname = res.data.lastName
+      submitForm.dob = res.data.dob
+      submitForm.phousename = res.data.permanentAddress.addressL1
+      submitForm.pdistrict = res.data.permanentAddress.district
+      submitForm.pstate = res.data.permanentAddress.state
+      submitForm.pcity = res.data.permanentAddress.city
+      submitForm.ppin = res.data.permanentAddress.pincode
+      submitForm.sponser = res.data.sponserName
+      submitForm.relationWithApplicant = res.data.gruardianRelation
+      submitForm.branch = res.data.selectedBranch
+      submitForm.transactionId = res.data.transactionID
+      submitForm.parentName = res.data.guardianName
+      submitForm.occupation = res.data.guardianOccupation
+
+      setCurrentTab(false)
+      setCurrentTab(true)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },[]);
+  const handleChange= (e) =>{
+    const {value,id}=e.target;
+    const newForm = {...submitForm};
     newForm[id] = value;
     setSubmitForm(newForm);
     console.log(newForm);
@@ -95,37 +122,78 @@ const NriForm = () => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("user_id");
-    history("/login");
-  };
+  const logout=()=>{
+    localStorage.removeItem("access_token")
+    localStorage.removeItem("user_id")
+    history("/login")
+  }
+
+  // const formSubmit=(e)=>{
+  //   e.preventDefault()
+  //   console.log(submitForm)
+  //   axios.patch(api+"/"+user,
+  //   {
+  //     firstName        : submitForm.firstName,
+  //     middleName       : submitForm.middleName,
+  //     lastName         : submitForm.lastName,
+  //     dob              : submitForm.dob,
+  //     addressL1P       : submitForm.phousename,
+  //     districtP        : submitForm.pdistrict,
+  //     cityP            : submitForm.pcity,
+  //     stateP           : submitForm.pstate,
+  //     pincodeP         : Number(submitForm.ppin),
+  //     aPhone           : submitForm.phone1,
+  //     phone            : submitForm.phone2,
+  //     guardianName     : submitForm.parentName,
+  //     fatherOccupation : submitForm.occupation,
+  //     relation         : submitForm.relationWithApplicant,
+  //     NRIname          : submitForm.sponser,
+  //     transactionID    : submitForm.transactionId,
+  //     bp1              : submitForm.branch,
+  //   },
+  //   {
+  //     headers: {
+  //       Authorization: 'Bearer ' + access
+  //     }
+  //   })
+  //   .then((Response) => {
+  //     if(Response.status === 200)
+  //       toast.success("save successful")
+  //       console.log(Response)
+  //   })
+  //   .catch(({ Response }) => {
+  //     toast.error("Something went wrong try again later")
+  //     if(Response)
+  //     {
+  //       toast.error("Something went wrong ERR_CODE: "+Response.status)
+  //     }
+  //   })
 
   const formSubmit = (e) => {
     e.preventDefault();
     console.log(submitForm);
+    const data = {
+      firstName: submitForm.fname,
+      middleName: submitForm.mname,
+      lastName: submitForm.lname,
+      dob: submitForm.dob,
+      addressL1P: submitForm.phousename,
+      districtP: submitForm.pdistrict,
+      cityP: submitForm.pcity,
+      stateP: submitForm.pstate,
+      pincodeP: Number(submitForm.ppin),
+      aPhone: submitForm.phone1,
+      phone: submitForm.phone2,
+      guardianName: submitForm.parentName,
+      guardianOccupation: submitForm.occupation,
+      guardianRelation: submitForm.relationWithApplicant,
+      NRIname: submitForm.sponser,
+      transactionID: submitForm.transactionId,
+      bp1: "CSE",
+    }
     axios
       .patch(
-        api + "/" + user,
-        {
-          firstName: submitForm.firstName,
-          middleName: submitForm.middleName,
-          lastName: submitForm.lastName,
-          dob: submitForm.dob,
-          addressL1P: submitForm.phousename,
-          districtP: submitForm.pdistrict,
-          cityP: submitForm.pcity,
-          stateP: submitForm.pstate,
-          pincodeP: Number(submitForm.ppin),
-          aPhone: submitForm.phone1,
-          phone: submitForm.phone2,
-          guardianName: submitForm.parentName,
-          fatherOccupation: submitForm.occupation,
-          guardianRelation: submitForm.relationWithApplicant,
-          NRIname: submitForm.sponser,
-          transactionID: submitForm.transactionId,
-          bp1: submitForm.branch,
-        },
+        api + "/" + user,data,
         {
           headers: {
             Authorization: "Bearer " + access,
@@ -142,6 +210,7 @@ const NriForm = () => {
           toast.error("Something went wrong ERR_CODE: " + Response.status);
         }
       });
+      console.log(data)
   };
 
   return (
@@ -310,7 +379,7 @@ const NriForm = () => {
                     <input
                       placeholder="district"
                       type="text"
-                      id="district"
+                      id="pdistrict"
                       value={submitForm.pdistrict}
                       onChange={handleChange}
                       className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
@@ -321,7 +390,7 @@ const NriForm = () => {
                     <input
                       placeholder="state"
                       type="text"
-                      id="state"
+                      id="pstate"
                       value={submitForm.pstate}
                       onChange={handleChange}
                       className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"

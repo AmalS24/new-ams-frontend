@@ -1,5 +1,5 @@
 import React ,{useState} from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import Navbar from "./Components/Navbar.js";
 import TitleBar from "./Components/TitleBar.js";
 import HomePage from "./Pages/HomePage.js";
@@ -21,10 +21,7 @@ const Admin = () => {
         <Navbar data={toggleBar} onToggle={closeNavBar} />
         <div className="w-auto mx-auto sm:w-5/6 flex space-y-4 flex-col sm:p-4 h-full">
           <TitleBar onToggle={openNavBar} />
-          <Routes>
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/search" element={<TableDemo />} />
-          </Routes>
+          <Outlet/>
         </div>
     </div>
   );
