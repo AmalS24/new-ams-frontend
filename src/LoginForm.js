@@ -32,7 +32,7 @@ const LoginForm = () => {
     }
     if(data.applicationNo === "admin")
     {
-      localStorage.setItem("admin_access_token","aaaa")
+      localStorage.setItem("admin_access_token","abcd")
       nav("/admin")
       window.location.reload()
     }

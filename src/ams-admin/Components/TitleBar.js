@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const TitleBar = (props) => {
+  const nav = useNavigate()
+  const logout=()=>{
+    localStorage.removeItem("admin_access_token");
+    nav("/login")
+    window.location.reload()
+  }
   return (
     <div className="w-full  sm:h-16 rounded-md flex justify-between p-3 sm:px-8 items-center bg-white shadow-xl ">
       <div className="flex w-auto">
@@ -46,16 +52,12 @@ const TitleBar = (props) => {
           alt="log-out"
           className="ml-6 w-6 h-6"
         />
-        <Link
-          to="/login"
-          onClick={localStorage.removeItem("admin_access_token")}
-        >
           <img
             src="https://cdn-icons-png.flaticon.com/512/402/402593.png"
             alt="log-out"
             className="ml-6 w-6 h-6"
+            onClick={logout}
           />
-        </Link>
       </div>
     </div>
   );
