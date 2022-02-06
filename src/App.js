@@ -9,6 +9,7 @@ import Admin from "./ams-admin/Admin";
 import HomePage from "./ams-admin/Pages/HomePage";
 import SearchPage from "./ams-admin/Pages/SearchPage";
 import Loader from "./components/Loader";
+import Form from "./ams-client/Form";
 
 
 
@@ -18,7 +19,7 @@ const App = () => {
   const admin_access = localStorage.getItem("admin_access_token")
   return (
     <>
-    <Routes>
+    {/* <Routes>
       <Route path="/"  element={<AMS/>}/>
       <Route path="/registration" element={<RegisterForm/>}/>
       <Route path="/login" element={<LoginForm/>}/>
@@ -32,12 +33,12 @@ const App = () => {
         <Route path="gov" element={<p>GOVERNMENT</p>} />
         <Route path="verify" element={<p>VERIFICATION</p>} />
        </Route>):<Route path="/admin" element={<Loader />}/>}
-    </Routes> 
+    </Routes>  */}
     {/* <Admin /> */}
       {/* <Home/> */}
       {/* <RegisterForm /> */}
       {/* <LoginForm /> */}
-      {/* <NriForm /> */}
+      <NriForm />
     </>
   );
 };

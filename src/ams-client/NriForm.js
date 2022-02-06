@@ -438,7 +438,7 @@ const NriForm = () => {
                 </div>
                 <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
                   <div className="lg:w-1/2">
-                    <label className="text-lg  ml-3 italic">
+                    <label className="text-md  ml-3 italic">
                       Name of Parent/Guardian*
                     </label>
                     <input
@@ -479,9 +479,39 @@ const NriForm = () => {
             </div>
           </div>
         ) : (
-          <div className="w-full bg-white pt-4 h-auto space-y-2 p-4"></div>
+          <div className="w-full bg-white h-auto space-y-2 ">
+            <div className="flex flex-col space-y-16 items-center p-16 justify-center">
+            <h1 className="sm:text-xl text-lg font-semi-bold">Please Note : <b className="text-blue-700  italic">Pay adavance provisional registration fee of Rs.1,00,500 to the following bank account and upload the photo of transaction slip here </b></h1>
+            <p className="sm:text-xl text-lg italic">Name: <b>Muthoot M George Institute of Technology</b></p>
+            <p className="sm:text-xl text-lg italic">Address: <b>Varikoli ,Puthencruz - 682308</b></p>
+            <p className="sm:text-xl text-lg italic">Phone: <b>0484-2732100</b></p>
+            <p className="sm:text-xl text-lg italic">Bank: <b>FEDERAL BANK LTD</b></p>
+            <p className="sm:text-xl text-lg italic">Address: <b>PUTHENCRUZ</b></p>
+            <p className="sm:text-xl text-lg italic">Branch: <b>Puthencruz</b></p>
+            <p className="sm:text-xl text-lg italic">Phone: <b>0484-2731259</b></p>
+            <p className="sm:text-xl text-lg italic">Account No.: <b>122330200217387</b></p>
+            <p className="sm:text-xl text-lg italic">IFSC Code: <b>FDRL0001223</b></p>
+            <p className="sm:text-xl text-lg italic">MICR Code: <b>682049055</b></p>
+            </div>
+            <div className="h-auto p-4 sm:p-16 space-y-3 w-full">
+              <p className="text-xl italic">Branch Preference*</p>
+              <select
+              name="branch pref"
+              className="h-11 w-full border-[2px] rounded-md pl-4 text-md sm:text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+              id="branch"
+            >
+              <option value=""></option>
+              <option value="cse">Computer Science Engineering</option>
+              <option value="ece">Electrical And Communications Engineering</option>
+              <option value="eee">Electrical And Electronics Engineering</option>
+              <option value="ce">Civil Engineering</option>
+              <option value="me">Mechanical Engineering</option>
+            </select>
+            <p className="text-lg italic">You are in waiting list</p>
+              </div>
+              </div>
         )}
-        <div className="flex flex-row justify-center space-x-4">
+        <div className="flex flex-row pb-8 justify-center bg-white space-x-4">
           <button className="w-auto px-4 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800 h-12">
             Save
           </button>
