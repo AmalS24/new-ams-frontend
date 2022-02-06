@@ -241,7 +241,7 @@ const RegisterForm = () => {
           <button className="w-auto h-auto p-3 text-xl text-white rounded-md italic hover:bg-pink-600 bg-pink-800">
           Submit
           </button>
-          <p className="font-thin text-lg">Already Registered ? Try <Link to="/login">Sign-in</Link></p>
+          <p className="font-thin text-lg">Already Registered ? Try <Link className="font-semibold hover:text-blue-500" to="/login">Sign-in</Link></p>
         </div>
       </form>
     </div>

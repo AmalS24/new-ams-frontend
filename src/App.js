@@ -8,6 +8,8 @@ import { Route,Routes } from "react-router-dom";
 import Admin from "./ams-admin/Admin";
 import HomePage from "./ams-admin/Pages/HomePage";
 import SearchPage from "./ams-admin/Pages/SearchPage";
+import Loader from "./components/Loader";
+
 
 
 
@@ -29,7 +31,7 @@ const App = () => {
         <Route path="mgmt" element={<p>MANAGEMENT</p>} />
         <Route path="gov" element={<p>GOVERNMENT</p>} />
         <Route path="verify" element={<p>VERIFICATION</p>} />
-       </Route>):<Route path="/admin" element={<NotFound/>}/>}
+       </Route>):<Route path="/admin" element={<Loader />}/>}
     </Routes> 
     {/* <Admin /> */}
       {/* <Home/> */}

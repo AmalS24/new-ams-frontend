@@ -9,7 +9,7 @@ const TitleBar = (props) => {
     window.location.reload()
   }
   return (
-    <div className="w-full  sm:h-16 rounded-md flex justify-between p-3 sm:px-8 items-center bg-white shadow-xl ">
+    <div className="w-full rounded-md flex justify-between p-3 sm:px-8 items-center bg-white shadow-xl ">
       <div className="flex w-auto">
         <p className="text-lg hidden xl:flex  italic">Registration Status: </p>
         <svg
@@ -52,13 +52,19 @@ const TitleBar = (props) => {
           alt="log-out"
           className="ml-6 w-6 h-6"
         />
-          <img
+         <img
             src="https://cdn-icons-png.flaticon.com/512/402/402593.png"
             alt="log-out"
             className="ml-6 w-6 h-6"
             onClick={logout}
           />
       </div>
+      <img
+            src="https://cdn-icons-png.flaticon.com/512/402/402593.png"
+            alt="log-out"
+            className="mr-1 xl:hidden w-6 h-6"
+            onClick={logout}
+          />
     </div>
   );
 };
