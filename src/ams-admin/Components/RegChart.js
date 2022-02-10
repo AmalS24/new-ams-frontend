@@ -31,7 +31,7 @@ const RegChart = () => {
     datasets: [
       {
         label: "Registration's",
-        data: [310, 120, 210, 150, 350, 280],
+        data: [310, 120, 210, 150, 300, 280],
         backgroundColor: [
           "rgb(255, 99, 132)",
           "rgb(75, 192, 192)",

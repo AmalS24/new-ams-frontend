@@ -10,16 +10,16 @@ import HomePage from "./ams-admin/Pages/HomePage";
 import SearchPage from "./ams-admin/Pages/SearchPage";
 import Loader from "./components/Loader";
 import Form from "./ams-client/Form";
-
-
-
+import Nri from "./ams-admin/Pages/Nri";
+import Gov from "./ams-admin/Pages/Gov";
+import Mgmt from "./ams-admin/Pages/Mgmt";
 
 const App = () => {
   const access = localStorage.getItem("access_token")
   const admin_access = localStorage.getItem("admin_access_token")
   return (
     <>
-    {/* <Routes>
+    <Routes>
       <Route path="/"  element={<AMS/>}/>
       <Route path="/registration" element={<RegisterForm/>}/>
       <Route path="/login" element={<LoginForm/>}/>
@@ -28,17 +28,18 @@ const App = () => {
       <Route path="/admin" element={<Admin/>}>
         <Route path="" element={<HomePage />} />
         <Route path="search" element={<SearchPage />} />
-        <Route path="nri" element={<p>NRI</p>} />
-        <Route path="mgmt" element={<p>MANAGEMENT</p>} />
-        <Route path="gov" element={<p>GOVERNMENT</p>} />
+        <Route path="nri" element={<Nri/>} />
+        <Route path="mgmt" element={<Mgmt/>} />
+        <Route path="gov" element={<Gov/>} />
         <Route path="verify" element={<p>VERIFICATION</p>} />
+        <Route path="settings" element={<p>SETTINGS</p>} />
        </Route>):<Route path="/admin" element={<Loader />}/>}
-    </Routes>  */}
+    </Routes> 
     {/* <Admin /> */}
       {/* <Home/> */}
       {/* <RegisterForm /> */}
       {/* <LoginForm /> */}
-      <NriForm />
+      {/* <NriForm /> */}
     </>
   );
 };

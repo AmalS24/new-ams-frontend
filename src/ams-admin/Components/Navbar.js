@@ -24,6 +24,9 @@ const Navbar = (props) => {
         <Link onClick={props.onToggle} to="verify" className="text-white  hover:scale-110  italic ">
           Profile Verification
         </Link>
+        <Link onClick={props.onToggle} to="settings" className="text-white  hover:scale-110  italic ">
+          Settings
+        </Link>
       </div>
     </div>
   );
