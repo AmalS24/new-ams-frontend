@@ -11,7 +11,7 @@ import {
   LineElement,
   RadialLinearScale,
 } from "chart.js";
-import { Bar, Doughnut, PolarArea } from "react-chartjs-2";
+import { Bar, Doughnut, Line, Pie, PolarArea } from "react-chartjs-2";
 
 ChartJS.register(
   RadialLinearScale,
@@ -62,9 +62,7 @@ const RegChart = () => {
   };
 
   return (
-    <div className=""> 
-      <Bar  data={data} height={400} options={options} />  
-    </div>
+       <Bar  data={data} height={400} options={options} />   
   );
 };
 

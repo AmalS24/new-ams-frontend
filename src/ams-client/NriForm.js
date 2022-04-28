@@ -8,10 +8,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const NriForm = () => {
-
-  const access = localStorage.getItem("access_token")
-  const user = localStorage.getItem("user_id")
-  const api = "https://ams-backend-api.herokuapp.com/user/nri/application"
+  const access = localStorage.getItem("access_token");
+  const user = localStorage.getItem("user_id");
+  const api = "https://ams-backend-api.herokuapp.com/user/nri/application";
   const history = useNavigate();
   const [submitForm, setSubmitForm] = useState({});
   useEffect(() => {
@@ -36,40 +35,43 @@ const NriForm = () => {
     //   submitForm.branch                = response.data.user.bp1
     //   setCurrentTab(false)
     //   setCurrentTab(true)
-    //   console.log(response,user)  
+    //   console.log(response,user)
     //   })
-    axios.get(api,{
-      headers:{
-        Authorization:"Bearer "+access,
-      }
-    }).then(res=>{
-      console.log(res.data)
-      submitForm.fname = res.data.firstName
-      submitForm.mname = res.data.middleName
-      submitForm.lname = res.data.lastName
-      submitForm.dob = res.data.dob
-      submitForm.phousename = res.data.permanentAddress.addressL1
-      submitForm.pdistrict = res.data.permanentAddress.district
-      submitForm.pstate = res.data.permanentAddress.state
-      submitForm.pcity = res.data.permanentAddress.city
-      submitForm.ppin = res.data.permanentAddress.pincode
-      submitForm.sponser = res.data.sponserName
-      submitForm.relationWithApplicant = res.data.gruardianRelation
-      submitForm.branch = res.data.selectedBranch
-      submitForm.transactionId = res.data.transactionID
-      submitForm.parentName = res.data.guardianName
-      submitForm.occupation = res.data.guardianOccupation
-      submitForm.branch = res.data.selectedBranch
+    axios
+      .get(api, {
+        headers: {
+          Authorization: "Bearer " + access,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        submitForm.fname = res.data.firstName;
+        submitForm.mname = res.data.middleName;
+        submitForm.lname = res.data.lastName;
+        submitForm.dob = res.data.dob;
+        submitForm.phousename = res.data.permanentAddress.addressL1;
+        submitForm.pdistrict = res.data.permanentAddress.district;
+        submitForm.pstate = res.data.permanentAddress.state;
+        submitForm.pcity = res.data.permanentAddress.city;
+        submitForm.ppin = res.data.permanentAddress.pincode;
+        submitForm.sponser = res.data.sponserName;
+        submitForm.relationWithApplicant = res.data.gruardianRelation;
+        submitForm.branch = res.data.selectedBranch;
+        submitForm.transactionId = res.data.transactionID;
+        submitForm.parentName = res.data.guardianName;
+        submitForm.occupation = res.data.guardianOccupation;
+        submitForm.branch = res.data.selectedBranch;
 
-      setCurrentTab(false)
-      setCurrentTab(true)
-    }).catch(err=>{
-      console.log(err)
-    })
-  },[]);
-  const handleChange= (e) =>{
-    const {value,id}=e.target;
-    const newForm = {...submitForm};
+        setCurrentTab(false);
+        setCurrentTab(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  const handleChange = (e) => {
+    const { value, id } = e.target;
+    const newForm = { ...submitForm };
     newForm[id] = value;
     setSubmitForm(newForm);
     console.log(newForm);
@@ -88,11 +90,11 @@ const NriForm = () => {
     e.preventDefault();
     const ID = e.target.id;
     const active_tab =
-      "w-full border-t-[5px] items-center cursor-pointer flex justify-center bg-white border-pink-700";
-    const active_header = "text-pink-700 text-2xl";
+      "w-full border-t-[5px] items-center cursor-pointer flex justify-center bg-white border-slate-600";
+    const active_header = "text-slate-600 text-2xl";
     const inactive_tab =
-      "w-full hidden sm:flex border-b-[5px] items-center cursor-pointer justify-center border-pink-300";
-    const inactive_header = "text-pink-300 text-2xl";
+      "w-full hidden sm:flex border-b-[5px] items-center cursor-pointer justify-center border-slate-300";
+    const inactive_header = "text-slate-300 text-2xl";
     if (ID === "tab1" || ID === "header1" || ID === "prev") {
       document.getElementById("tab1").className = active_tab;
       document.getElementById("header1").className = active_header;
@@ -123,11 +125,11 @@ const NriForm = () => {
     }
   };
 
-  const logout=()=>{
-    localStorage.removeItem("access_token")
-    localStorage.removeItem("user_id")
-    history("/login")
-  }
+  const logout = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user_id");
+    history("/login");
+  };
 
   // const formSubmit=(e)=>{
   //   e.preventDefault()
@@ -191,16 +193,13 @@ const NriForm = () => {
       NRIname: submitForm.sponser,
       transactionID: submitForm.transactionId,
       bp1: "CSE",
-    }
+    };
     axios
-      .patch(
-        api + "/" + user,data,
-        {
-          headers: {
-            Authorization: "Bearer " + access,
-          },
-        }
-      )
+      .patch(api + "/" + user, data, {
+        headers: {
+          Authorization: "Bearer " + access,
+        },
+      })
       .then((Response) => {
         if (Response.status === 200) toast.success("save successful");
         console.log(Response);
@@ -211,26 +210,25 @@ const NriForm = () => {
           toast.error("Something went wrong ERR_CODE: " + Response.status);
         }
       });
-      console.log(data)
+    console.log(data);
   };
-  const checkSeat=()=>{
-    const branch = document.getElementById("branch").value
+  const checkSeat = () => {
+    const branch = document.getElementById("branch").value;
     console.log(branch);
-  }
+  };
 
   const enableButton = () => {
     const isChecked = document.getElementById("check").checked;
     document.getElementById.disabled = true;
-    if(isChecked)
-    {
-      document.getElementById("finalButton").disabled = false
-      document.getElementById("finalButton").className = "w-auto mt-8 h-auto hover:bg-green-600 p-2 rounded-md bg-pink-600 text-white"
+    if (isChecked) {
+      document.getElementById("finalButton").disabled = false;
+      document.getElementById("finalButton").className =
+        "w-auto mt-8 h-auto hover:bg-green-600 p-2 rounded-md bg-slate-600 text-white";
     }
-    
-  }
+  };
 
   return (
-    <div className="w-screen relative overflow-x-hidden h-screen flex pt-20 xl:pt-12 justify-center bg-zinc-700">
+    <div className="min-w-screen h-screen relative  flex py-20 xl:pt-12  justify-center bg-zinc-700">
       <ToastContainer
         transition={Zoom}
         hideProgressBar={true}
@@ -240,11 +238,24 @@ const NriForm = () => {
         bodyClassName="text-black"
         closeOnClick={true}
       />
-      <div className="w-full top-1 h-14 absolute z-20 flex items-center justify-between px-8">
+      <div className="w-full  top-1 h-14 absolute z-20 flex items-center justify-between px-8">
         <button onClick={logout}>
           <Link to="/">
-            <div className="w-auto px-4 text-white text-xl rounded-md hover:bg-pink-700 bg-pink-800 h-8">
-              Log-Out
+            <div className="text-white uppercase italic">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
             </div>
           </Link>
         </button>
@@ -262,18 +273,18 @@ const NriForm = () => {
       <form
         action=""
         onSubmit={formSubmit}
-        className="w-[350px] sm:w-[600px] lg:w-[980px] h-auto border-[4px] bg-zinc-200 absolute z-20"
+        className="w-[350px] sm:w-[600px] lg:w-[980px] h-auto  border-[4px] bg-zinc-200 rounded-[6px] absolute z-20"
       >
         <div className="w-auto italic flex h-14">
           <div
             onClick={switchTab}
             id="tab1"
-            className="w-full border-t-[5px] items-center cursor-pointer flex justify-center bg-white border-pink-700"
+            className="w-full border-t-[5px] items-center cursor-pointer flex justify-center bg-white border-slate-600"
           >
             <p
               onClick={switchTab}
               id="header1"
-              className="text-pink-700 text-2xl"
+              className="text-slate-600 text-2xl"
             >
               Personal Details
             </p>
@@ -281,12 +292,12 @@ const NriForm = () => {
           <div
             onClick={switchTab}
             id="tab2"
-            className="w-full hidden sm:flex border-b-[5px] items-center cursor-pointer justify-center border-pink-300"
+            className="w-full hidden sm:flex border-b-[5px] items-center cursor-pointer justify-center border-slate-300"
           >
             <p
               onClick={switchTab}
               id="header2"
-              className="text-pink-300 text-2xl"
+              className="text-slate-300 text-2xl"
             >
               Payment Details
             </p>
@@ -305,7 +316,7 @@ const NriForm = () => {
                     id="fname"
                     value={submitForm.fname}
                     onChange={handleChange}
-                    className="h-10 w-full lg:w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                    className="h-10 w-full lg:w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                   />
                   <input
                     placeholder="Middle"
@@ -313,7 +324,7 @@ const NriForm = () => {
                     id="mname"
                     onChange={handleChange}
                     value={submitForm.mname}
-                    className="h-10 lg:w-1/3 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                    className="h-10 lg:w-1/3 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                   />
                   <input
                     placeholder="Last"
@@ -321,7 +332,7 @@ const NriForm = () => {
                     id="lname"
                     onChange={handleChange}
                     value={submitForm.lname}
-                    className="h-10 lg:w-1/3 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                    className="h-10 lg:w-1/3 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                   />
                 </div>
                 <div className="w-full h-auto pb-1 lg:space-x-3 lg:flex">
@@ -332,7 +343,7 @@ const NriForm = () => {
                     <input
                       placeholder=""
                       type="date"
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                     />
                   </div>
                   <div className="lg:w-2/3 pt-2">
@@ -343,7 +354,7 @@ const NriForm = () => {
                       onChange={handleImageChange}
                       placeholder=""
                       type="file"
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                     />
                     {InvalidImgFormat && (
                       <p className="ml-3 text-red-700 font-mono text-center text-lg font-bold italic">
@@ -353,8 +364,8 @@ const NriForm = () => {
                   </div>
                 </div>
               </div>
-              <div className="lg:w-1/3 flex justify-center py-2 h-auto">
-                <div className="flex rounded-md h-44 border-[3px] border-black">
+              <div className="lg:w-1/3 flex  justify-center p-2 h-auto">
+                <div className="flex h-44 border-[3px] border-black">
                   {!ImagePreview || InvalidImgFormat ? (
                     <>
                       <p className="text-center my-8 italic">
@@ -374,7 +385,7 @@ const NriForm = () => {
               </div>
             </div>
 
-            <div className="w-full h-auto lg:flex ">
+            <div className="w-full py-3 h-auto lg:flex ">
               <div className="lg:w-1/2 p-2">
                 <div>
                   <label className="text-lg  ml-3 italic">
@@ -386,10 +397,10 @@ const NriForm = () => {
                     id="phousename"
                     value={submitForm.phousename}
                     onChange={handleChange}
-                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                   />
                 </div>
-                <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
+                <div className="lg:flex py-3 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
                   <div className="lg:w-1/2">
                     <label className="text-lg  ml-3 italic">District*</label>
                     <input
@@ -398,7 +409,7 @@ const NriForm = () => {
                       id="pdistrict"
                       value={submitForm.pdistrict}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                     />
                   </div>
                   <div className="lg:w-1/2">
@@ -409,7 +420,7 @@ const NriForm = () => {
                       id="pstate"
                       value={submitForm.pstate}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                     />
                   </div>
                 </div>
@@ -422,7 +433,7 @@ const NriForm = () => {
                       id="pcity"
                       value={submitForm.pcity}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                     />
                   </div>
                   <div className="lg:w-1/2">
@@ -433,7 +444,7 @@ const NriForm = () => {
                       id="ppin"
                       value={submitForm.ppin}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                     />
                   </div>
                 </div>
@@ -449,13 +460,13 @@ const NriForm = () => {
                     id="sponser"
                     value={submitForm.sponser}
                     onChange={handleChange}
-                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                   />
                 </div>
-                <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
+                <div className="lg:flex py-3 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
                   <div className="lg:w-1/2">
-                    <label className="text-md  ml-3 italic">
-                      Name of Parent/Guardian*
+                    <label className="text-lg ml-3 italic">
+                      Parent/Guardian*
                     </label>
                     <input
                       placeholder="Full Name"
@@ -463,7 +474,7 @@ const NriForm = () => {
                       id="parentName"
                       value={submitForm.parentName}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                     />
                   </div>
                   <div className="lg:w-1/2">
@@ -474,7 +485,7 @@ const NriForm = () => {
                       id="occupation"
                       value={submitForm.occupation}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                     />
                   </div>
                 </div>
@@ -488,87 +499,125 @@ const NriForm = () => {
                     id="relationWithApplicant"
                     value={submitForm.relationWithApplicant}
                     onChange={handleChange}
-                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                   />
                 </div>
               </div>
             </div>
           </div>
         ) : (
-          <div className="w-full bg-white h-auto space-y-3 ">
-            <div className="flex flex-col space-y-4 items-center p-16 justify-center">
-            <h1 className="sm:text-xl text-lg font-semi-bold">Please Note : <b className="text-blue-700  italic">Pay adavance provisional registration fee of Rs.1,00,500 to the following bank account and upload the photo of transaction slip here </b></h1>
-            <p className="sm:text-xl text-lg italic">Name: <b>Muthoot M George Institute of Technology</b></p>
-            <p className="sm:text-xl text-lg italic">Address: <b>Varikoli ,Puthencruz - 682308</b></p>
-            <p className="sm:text-xl text-lg italic">Phone: <b>0484-2732100</b></p>
-            <p className="sm:text-xl text-lg italic">Bank: <b>FEDERAL BANK LTD</b></p>
-            <p className="sm:text-xl text-lg italic">Address: <b>PUTHENCRUZ</b></p>
-            <p className="sm:text-xl text-lg italic">Branch: <b>Puthencruz</b></p>
-            <p className="sm:text-xl text-lg italic">Phone: <b>0484-2731259</b></p>
-            <p className="sm:text-xl text-lg italic">Account No.: <b>122330200217387</b></p>
-            <p className="sm:text-xl text-lg italic">IFSC Code: <b>FDRL0001223</b></p>
-            <p className="sm:text-xl text-lg italic">MICR Code: <b>682049055</b></p>
+          <div className="w-full bg-white h-auto ">
+            <div className="flex flex-col space-y-3 items-center p-6 justify-center">
+              <h1 className="sm:text-xl text-center text-lg font-semi-bold">
+                Please Note :{" "}
+                <b className="text-blue-700  italic">
+                  Pay adavance provisional registration fee of Rs.1,00,500 to
+                  the following bank account and upload the photo of transaction
+                  slip here{" "}
+                </b>
+              </h1>
+              <div className="w-full flex lg:flex-row flex-col h-auto bg-gray-300">
+                <div className="lg:w-1/2 h-auto text-center space-y-2 p-3 bg-white">
+                <p className="sm:text-xl text-lg italic">
+                Name: <b>Muthoot M George Institute of Technology</b>
+              </p>
+              <p className="sm:text-xl text-lg italic">
+                Address: <b>Varikoli ,Puthencruz - 682308</b>
+              </p>
+              <p className="sm:text-xl text-lg italic">
+                Phone: <b>0484-2732100</b>
+              </p>
+              <p className="sm:text-xl text-lg italic">
+                Bank: <b>FEDERAL BANK LTD</b>
+              </p>
+              <p className="sm:text-xl text-lg italic">
+                Address: <b>PUTHENCRUZ</b>
+              </p>
+              <p className="sm:text-xl text-lg italic">
+                Branch: <b>Puthencruz</b>
+              </p>
+              <p className="sm:text-xl text-lg italic">
+                Phone: <b>0484-2731259</b>
+              </p>
+              <p className="sm:text-xl text-lg italic">
+                Account No.: <b>122330200217387</b>
+              </p>
+              <p className="sm:text-xl text-lg italic">
+                IFSC Code: <b>FDRL0001223</b>
+              </p>
+              <p className="sm:text-xl text-lg italic">
+                MICR Code: <b>682049055</b>
+              </p>
+                </div>
+                <div className="lg:w-1/2 h-auto text-center space-y-2 p-3 bg-white">
+                <div className="h-auto p-4 sm:p-4 space-y-3 w-full">
+              <label className="text-lg lg:text-xl  ml-3 italic">
+                Transaction Document*
+              </label>
+              <input
+                placeholder=""
+                type="file"
+                className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+              />
             </div>
-            <div className="h-auto p-4 sm:p-4 space-y-3 w-full">
-            <label className="text-lg  ml-3 italic">
-                      Transaction Document*
-                    </label>
-                    <input
-                      placeholder=""
-                      type="file"
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
-                    />
-            </div>
-            <div className="h-auto p-4 sm:p-4 space-y-3 w-full">
-              <p className="text-xl italic">Branch Preference*</p>
+            <div className="h-auto lg:p-4 sm:p-4 space-y-3 w-full">
+              <p className="text-lg lg:text-xl italic">Branch Preference*</p>
               <select
-              name="branch pref"
-              className="h-11 w-full border-[2px] rounded-md pl-4 text-md sm:text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
-              id="branch"
-              onChange={handleChange}
-              value={submitForm.branch}
-            >
-              <option value=""></option>
-              <option value="null"></option>
-              <option value="CSE">Computer Science Engineering</option>
-              <option value="ECE">Electrical And Communications Engineering</option>
-              <option value="EEE">Electrical And Electronics Engineering</option>
-              <option value="CE">Civil Engineering</option>
-              <option value="ME">Mechanical Engineering</option>
-            </select>
-            <p className="text-lg italic">You are in waiting list</p>
-              </div>
-              <div className="w-auto h-auto space-x-2 flex items-center justify-center">
-                <input 
+                name="branch pref"
+                className="h-11 w-full border-[2px] rounded-md pl-4 text-md sm:text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                id="branch"
+                onChange={handleChange}
+                value={submitForm.branch}
+              >
+                <option value=""></option>
+                <option value="CSE">Computer Science Engineering</option>
+                <option value="ECE">
+                  Electrical And Communications Engineering
+                </option>
+                <option value="EEE">
+                  Electrical And Electronics Engineering
+                </option>
+                <option value="CE">Civil Engineering</option>
+                <option value="ME">Mechanical Engineering</option>
+              </select>
+              <p className="text-lg italic">You are in waiting list</p>
+            </div>
+            <div className="w-auto h-auto flex items-center px-6">
+              <input
                 id="check"
-                type="checkbox"  
+                type="checkbox"
                 // onChange={enableButton}
-                className="md:w-4 md:h-4 h-auto" />
-                <p className=" ">
-                  I agree that I have reviewed the form, and is proceeding for finalsubmit
-                </p>
+                className="md:w-6 mb-6 md:h-6 h-auto"
+              />
+              <p className="text-md lg:text-lg  ">
+                I agree that I have reviewed the form, and is proceeding for
+                finalsubmit
+              </p>
+            </div>
+                </div>
               </div>
-              
-              </div>
+            </div>
+          </div>
         )}
-        <div className="flex flex-row pb-8 justify-center bg-white space-x-4">
-          <button className="w-auto px-4 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800 h-12">
-          Save
-          </button>
-          <button
+        <div className="flex flex-row pb-6 pr-8 justify-end bg-white space-x-4">
+        <button
             id={CurrentTab ? "next" : "prev"}
             onClick={switchTab}
-            className="w-auto px-4 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800 h-12"
+            className="w-auto px-4 text-white text-lg rounded-md hover:bg-teal-500 bg-teal-600 h-11"
           >
             {CurrentTab ? "Next" : "Prev"}
           </button>
-          {
-            !CurrentTab && <button
-            id="finalButton"
-            className="w-auto px-4 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800 h-12">
+          <button className="w-auto px-4 text-white text-lg rounded-md hover:bg-slate-600 bg-slate-800 h-11">
+            Save
+          </button>
+          {!CurrentTab && (
+            <button
+              id="finalButton"
+              className="w-auto px-4 text-white text-lg rounded-md hover:bg-red-500 bg-red-600 h-11"
+            >
               Submit
             </button>
-          }
+          )}
         </div>
       </form>
     </div>

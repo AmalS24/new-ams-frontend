@@ -20,7 +20,7 @@ const App = () => {
   const admin_access = localStorage.getItem("admin_access_token")
   return (
     <>
-    <Routes>
+    {/* <Routes>
       <Route path="/"  element={<AMS/>}/>
       <Route path="/registration" element={<RegisterForm/>}/>
       <Route path="/login" element={<LoginForm/>}/>
@@ -35,12 +35,13 @@ const App = () => {
         <Route path="verify" element={<p>VERIFICATION</p>} />
         <Route path="settings" element={<Settings/>} />
        </Route>):<Route path="/admin" element={<Loader />}/>}
-    </Routes> 
+    </Routes>  */}
     {/* <Admin /> */}
       {/* <Home/> */}
       {/* <RegisterForm /> */}
       {/* <LoginForm /> */}
-      {/* <NriForm /> */}
+      <NriForm />
+      {/* <Form /> */}
     </>
   );
 };

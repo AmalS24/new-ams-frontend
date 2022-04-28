@@ -114,7 +114,7 @@ const LoginForm = () => {
               className="h-12 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
             />
             <button className="w-auto px-4 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800 h-12">
-              Request
+              Resend
             </button>
           </div>
           <p
