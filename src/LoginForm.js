@@ -68,7 +68,7 @@ const LoginForm = () => {
     return(<Loader/>)
   else
   return (
-    <div className="w-screen relative overflow-x-hidden h-screen flex items-center justify-center bg-zinc-700">
+    <div className="min-w-screen relative  h-screen flex items-center justify-center bg-zinc-700">
       <ToastContainer
         transition={Zoom}
         hideProgressBar={true}

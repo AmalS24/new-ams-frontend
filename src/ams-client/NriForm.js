@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, Zoom } from "react-toastify";
 
-import home from "../Icons/home.svg";
 import help from "../Icons/help.svg";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -15,28 +14,29 @@ const NriForm = () => {
   const [submitForm, setSubmitForm] = useState({});
   useEffect(() => {
     //Runs only on the first render
-    // axios.post(api,{token:access}).then(function (response) {
-    //   submitForm.fname                 = response.data.user.firstName
-    //   submitForm.mname                 = response.data.user.middleName
-    //   submitForm.lname                 = response.data.user.lastName
-    //   submitForm.dob                   = response.data.user.dob
-    //   submitForm.phousename            = response.data.user.permanentAddress.addressL1
-    //   submitForm.pcity                 = response.data.user.permanentAddress.city
-    //   submitForm.pstate                = response.data.user.permanentAddress.state
-    //   submitForm.pdistrict             = response.data.user.permanentAddress.district
-    //   submitForm.ppin                  = response.data.user.permanentAddress.pincode
-    //   submitForm.phone1                = response.data.user.aPhone
-    //   submitForm.phone2                = response.data.user.phone
-    //   submitForm.parentName            = response.data.user.guardianDetails.name
-    //   submitForm.sponser               = response.data.user.NRIdetails.name
-    //   submitForm.occupation            = response.data.user.fatherDetails.occupation
-    //   submitForm.relationWithApplicant = response.data.user.guardianDetails.relation
-    //   submitForm.transactionId         = response.data.user.transactionID
-    //   submitForm.branch                = response.data.user.bp1
-    //   setCurrentTab(false)
-    //   setCurrentTab(true)
-    //   console.log(response,user)
-    //   })
+    axios.post(api, { token: access }).then(function (response) {
+      submitForm.fname = response.data.user.firstName;
+      submitForm.mname = response.data.user.middleName;
+      submitForm.lname = response.data.user.lastName;
+      submitForm.dob = response.data.user.dob;
+      submitForm.phousename = response.data.user.permanentAddress.addressL1;
+      submitForm.pcity = response.data.user.permanentAddress.city;
+      submitForm.pstate = response.data.user.permanentAddress.state;
+      submitForm.pdistrict = response.data.user.permanentAddress.district;
+      submitForm.ppin = response.data.user.permanentAddress.pincode;
+      submitForm.phone1 = response.data.user.aPhone;
+      submitForm.phone2 = response.data.user.phone;
+      submitForm.parentName = response.data.user.guardianDetails.name;
+      submitForm.sponser = response.data.user.NRIdetails.name;
+      submitForm.occupation = response.data.user.fatherDetails.occupation;
+      submitForm.relationWithApplicant =
+        response.data.user.guardianDetails.relation;
+      submitForm.transactionId = response.data.user.transactionID;
+      submitForm.branch = response.data.user.bp1;
+      setCurrentTab(false);
+      setCurrentTab(true);
+      console.log(response, user);
+    });
     axios
       .get(api, {
         headers: {
@@ -244,16 +244,19 @@ const NriForm = () => {
             <div className="text-white uppercase italic">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-8 w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
+                width="22"
+                height="22"
+                fill="currentColor"
+                class="w-8 h-8"
+                viewBox="0 0 16 16"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                  fill-rule="evenodd"
+                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
                 />
               </svg>
             </div>
@@ -316,7 +319,7 @@ const NriForm = () => {
                     id="fname"
                     value={submitForm.fname}
                     onChange={handleChange}
-                    className="h-10 w-full lg:w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                    className="h-10 w-full lg:w-1/3  border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
                   />
                   <input
                     placeholder="Middle"
@@ -518,89 +521,91 @@ const NriForm = () => {
               </h1>
               <div className="w-full flex lg:flex-row flex-col h-auto bg-gray-300">
                 <div className="lg:w-1/2 h-auto text-center space-y-2 p-3 bg-white">
-                <p className="sm:text-xl text-lg italic">
-                Name: <b>Muthoot M George Institute of Technology</b>
-              </p>
-              <p className="sm:text-xl text-lg italic">
-                Address: <b>Varikoli ,Puthencruz - 682308</b>
-              </p>
-              <p className="sm:text-xl text-lg italic">
-                Phone: <b>0484-2732100</b>
-              </p>
-              <p className="sm:text-xl text-lg italic">
-                Bank: <b>FEDERAL BANK LTD</b>
-              </p>
-              <p className="sm:text-xl text-lg italic">
-                Address: <b>PUTHENCRUZ</b>
-              </p>
-              <p className="sm:text-xl text-lg italic">
-                Branch: <b>Puthencruz</b>
-              </p>
-              <p className="sm:text-xl text-lg italic">
-                Phone: <b>0484-2731259</b>
-              </p>
-              <p className="sm:text-xl text-lg italic">
-                Account No.: <b>122330200217387</b>
-              </p>
-              <p className="sm:text-xl text-lg italic">
-                IFSC Code: <b>FDRL0001223</b>
-              </p>
-              <p className="sm:text-xl text-lg italic">
-                MICR Code: <b>682049055</b>
-              </p>
+                  <p className="sm:text-xl text-lg italic">
+                    Name: <b>Muthoot M George Institute of Technology</b>
+                  </p>
+                  <p className="sm:text-xl text-lg italic">
+                    Address: <b>Varikoli ,Puthencruz - 682308</b>
+                  </p>
+                  <p className="sm:text-xl text-lg italic">
+                    Phone: <b>0484-2732100</b>
+                  </p>
+                  <p className="sm:text-xl text-lg italic">
+                    Bank: <b>FEDERAL BANK LTD</b>
+                  </p>
+                  <p className="sm:text-xl text-lg italic">
+                    Address: <b>PUTHENCRUZ</b>
+                  </p>
+                  <p className="sm:text-xl text-lg italic">
+                    Branch: <b>Puthencruz</b>
+                  </p>
+                  <p className="sm:text-xl text-lg italic">
+                    Phone: <b>0484-2731259</b>
+                  </p>
+                  <p className="sm:text-xl text-lg italic">
+                    Account No.: <b>122330200217387</b>
+                  </p>
+                  <p className="sm:text-xl text-lg italic">
+                    IFSC Code: <b>FDRL0001223</b>
+                  </p>
+                  <p className="sm:text-xl text-lg italic">
+                    MICR Code: <b>682049055</b>
+                  </p>
                 </div>
                 <div className="lg:w-1/2 h-auto text-center space-y-2 p-3 bg-white">
-                <div className="h-auto p-4 sm:p-4 space-y-3 w-full">
-              <label className="text-lg lg:text-xl  ml-3 italic">
-                Transaction Document*
-              </label>
-              <input
-                placeholder=""
-                type="file"
-                className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
-              />
-            </div>
-            <div className="h-auto lg:p-4 sm:p-4 space-y-3 w-full">
-              <p className="text-lg lg:text-xl italic">Branch Preference*</p>
-              <select
-                name="branch pref"
-                className="h-11 w-full border-[2px] rounded-md pl-4 text-md sm:text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
-                id="branch"
-                onChange={handleChange}
-                value={submitForm.branch}
-              >
-                <option value=""></option>
-                <option value="CSE">Computer Science Engineering</option>
-                <option value="ECE">
-                  Electrical And Communications Engineering
-                </option>
-                <option value="EEE">
-                  Electrical And Electronics Engineering
-                </option>
-                <option value="CE">Civil Engineering</option>
-                <option value="ME">Mechanical Engineering</option>
-              </select>
-              <p className="text-lg italic">You are in waiting list</p>
-            </div>
-            <div className="w-auto h-auto flex items-center px-6">
-              <input
-                id="check"
-                type="checkbox"
-                // onChange={enableButton}
-                className="md:w-6 mb-6 md:h-6 h-auto"
-              />
-              <p className="text-md lg:text-lg  ">
-                I agree that I have reviewed the form, and is proceeding for
-                finalsubmit
-              </p>
-            </div>
+                  <div className="h-auto p-4 sm:p-4 space-y-3 w-full">
+                    <label className="text-lg lg:text-xl  ml-3 italic">
+                      Transaction Document*
+                    </label>
+                    <input
+                      placeholder=""
+                      type="file"
+                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                    />
+                  </div>
+                  <div className="h-auto lg:p-4 sm:p-4 space-y-3 w-full">
+                    <p className="text-lg lg:text-xl italic">
+                      Branch Preference*
+                    </p>
+                    <select
+                      name="branch pref"
+                      className="h-11 w-full border-[2px] rounded-md pl-2 text-md sm:text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                      id="branch"
+                      onChange={handleChange}
+                      value={submitForm.branch}
+                    >
+                      <option value=""></option>
+                      <option value="CSE">Computer Science Engineering</option>
+                      <option value="ECE">
+                        Electronics And Communications Engineering
+                      </option>
+                      <option value="EEE">
+                        Electrical And Electronics Engineering
+                      </option>
+                      <option value="CE">Civil Engineering</option>
+                      <option value="ME">Mechanical Engineering</option>
+                    </select>
+                    <p className="text-lg italic">You are in waiting list</p>
+                  </div>
+                  <div className="w-auto h-auto flex items-center px-6">
+                    <input
+                      id="check"
+                      type="checkbox"
+                      // onChange={enableButton}
+                      className="md:w-6 mb-6 md:h-6 h-auto"
+                    />
+                    <p className="text-md lg:text-lg  ">
+                      I agree that I have reviewed the form, and is proceeding
+                      for finalsubmit
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         )}
         <div className="flex flex-row pb-6 pr-8 justify-end bg-white space-x-4">
-        <button
+          <button
             id={CurrentTab ? "next" : "prev"}
             onClick={switchTab}
             className="w-auto px-4 text-white text-lg rounded-md hover:bg-teal-500 bg-teal-600 h-11"
