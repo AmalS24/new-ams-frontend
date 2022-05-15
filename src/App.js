@@ -14,13 +14,14 @@ import Nri from "./ams-admin/Pages/Nri";
 import Gov from "./ams-admin/Pages/Gov";
 import Mgmt from "./ams-admin/Pages/Mgmt";
 import Settings from "./ams-admin/Pages/Settings";
+import DashBoard from "./DashBoard";
 
 const App = () => {
   const access = localStorage.getItem("access_token")
   const admin_access = localStorage.getItem("admin_access_token")
   return (
     <>
-    <Routes>
+    {/* <Routes>
       <Route path="/"  element={<AMS/>}/>
       <Route path="/registration" element={<RegisterForm/>}/>
       <Route path="/login" element={<LoginForm/>}/>
@@ -35,13 +36,9 @@ const App = () => {
         <Route path="verify" element={<p>VERIFICATION</p>} />
         <Route path="settings" element={<Settings/>} />
        </Route>):<Route path="/admin" element={<Loader />}/>}
-    </Routes> 
-     {/* <Admin />
-      <Home/>
-      <RegisterForm />
-      <LoginForm />
-      <NriForm />  */}
-        {/* <Form /> */}
+    </Routes>  */}
+     {/* <DashBoard /> */}
+     <NriForm />
     </>
   );
 };

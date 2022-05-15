@@ -90,11 +90,11 @@ const NriForm = () => {
     e.preventDefault();
     const ID = e.target.id;
     const active_tab =
-      "w-full border-t-[5px] items-center cursor-pointer flex justify-center bg-white border-slate-600";
-    const active_header = "text-slate-600 text-2xl";
+      "w-full rounded-md items-center cursor-pointer flex justify-center bg-white ";
+    const active_header = "text-teal-500 text-2xl";
     const inactive_tab =
-      "w-full hidden sm:flex border-b-[5px] items-center cursor-pointer justify-center border-slate-300";
-    const inactive_header = "text-slate-300 text-2xl";
+      "w-full rounded-md items-center cursor-pointer lg:flex hidden justify-center bg-white border-slate-600";
+    const inactive_header = "text-slate-600 text-2xl";
     if (ID === "tab1" || ID === "header1" || ID === "prev") {
       document.getElementById("tab1").className = active_tab;
       document.getElementById("header1").className = active_header;
@@ -223,12 +223,12 @@ const NriForm = () => {
     if (isChecked) {
       document.getElementById("finalButton").disabled = false;
       document.getElementById("finalButton").className =
-        "w-auto mt-8 h-auto hover:bg-green-600 p-2 rounded-md bg-slate-600 text-white";
+        "w-auto mt-8 h-auto hover:bg-green-600 p-2  bg-slate-600 text-white";
     }
   };
 
   return (
-    <div className="min-w-screen h-screen relative  flex py-20 xl:pt-12  justify-center bg-zinc-700">
+    <div className="min-w-screen min-h-screen relative flex py-20 xl:pt-10 justify-center bg-zinc-700">
       <ToastContainer
         transition={Zoom}
         hideProgressBar={true}
@@ -276,18 +276,26 @@ const NriForm = () => {
       <form
         action=""
         onSubmit={formSubmit}
-        className="w-[350px] sm:w-[600px] lg:w-[980px] h-auto  border-[4px] bg-zinc-200 rounded-[6px] absolute z-20"
+        className="w-[350px] md:w-[600px] lg:w-[980px] h-auto  bg-transparent absolute z-20"
       >
-        <div className="w-auto italic flex h-14">
+        <div className="w-auto italic lg:space-x-3 mb-3 flex h-14">
           <div
             onClick={switchTab}
             id="tab1"
-            className="w-full border-t-[5px] items-center cursor-pointer flex justify-center bg-white border-slate-600"
+            className="w-full rounded-md items-center cursor-pointer flex justify-center bg-white "
           >
+           <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 mr-2 w-6"
+              viewBox="0 0 20 20"
+              fill="rgb(71 85 105)"
+            >
+  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+</svg>
             <p
               onClick={switchTab}
               id="header1"
-              className="text-slate-600 text-2xl"
+              className="text-teal-500 text-2xl"
             >
               Personal Details
             </p>
@@ -295,12 +303,24 @@ const NriForm = () => {
           <div
             onClick={switchTab}
             id="tab2"
-            className="w-full hidden sm:flex border-b-[5px] items-center cursor-pointer justify-center border-slate-300"
+            className="w-full rounded-md items-center cursor-pointer lg:flex hidden justify-center bg-white border-slate-600"
           >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 mr-2 w-6"
+              viewBox="0 0 20 20"
+              fill="rgb(71 85 105)"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 5a1 1 0 100 2h1a2 2 0 011.732 1H7a1 1 0 100 2h2.732A2 2 0 018 11H7a1 1 0 00-.707 1.707l3 3a1 1 0 001.414-1.414l-1.483-1.484A4.008 4.008 0 0011.874 10H13a1 1 0 100-2h-1.126a3.976 3.976 0 00-.41-1H13a1 1 0 100-2H7z"
+                clip-rule="evenodd"
+              />
+            </svg>
             <p
               onClick={switchTab}
               id="header2"
-              className="text-slate-300 text-2xl"
+              className="text-slate-600 text-2xl"
             >
               Payment Details
             </p>
@@ -308,67 +328,10 @@ const NriForm = () => {
         </div>
 
         {CurrentTab ? (
-          <div className="w-full bg-white pt-4 h-auto space-y-2 p-4">
+          <div className="w-full bg-white rounded-md pt-4 h-auto space-y-2 p-4">
             <div className="w-full h-auto lg:flex ">
-              <div className="w-full lg:w-2/3 p-4">
-                <label className="text-lg  ml-3 italic">Full Name*</label>
-                <div className="w-full h-auto pb-2 space-y-2 lg:space-y-0 lg:space-x-3 lg:flex">
-                  <input
-                    placeholder="First"
-                    type="text"
-                    id="fname"
-                    value={submitForm.fname}
-                    onChange={handleChange}
-                    className="h-10 w-full lg:w-1/3  border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
-                  />
-                  <input
-                    placeholder="Middle"
-                    type="text"
-                    id="mname"
-                    onChange={handleChange}
-                    value={submitForm.mname}
-                    className="h-10 lg:w-1/3 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
-                  />
-                  <input
-                    placeholder="Last"
-                    type="text"
-                    id="lname"
-                    onChange={handleChange}
-                    value={submitForm.lname}
-                    className="h-10 lg:w-1/3 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
-                  />
-                </div>
-                <div className="w-full h-auto pb-1 lg:space-x-3 lg:flex">
-                  <div className="lg:w-1/3 pt-2">
-                    <label className="text-lg  ml-3 italic">
-                      Date of Birth*
-                    </label>
-                    <input
-                      placeholder=""
-                      type="date"
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
-                    />
-                  </div>
-                  <div className="lg:w-2/3 pt-2">
-                    <label className="text-lg  ml-3 italic">
-                      Photo Upload*
-                    </label>
-                    <input
-                      onChange={handleImageChange}
-                      placeholder=""
-                      type="file"
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
-                    />
-                    {InvalidImgFormat && (
-                      <p className="ml-3 text-red-700 font-mono text-center text-lg font-bold italic">
-                        Unsupported Format
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="lg:w-1/3 flex  justify-center p-2 h-auto">
-                <div className="flex h-44 border-[3px] border-black">
+              <div className="lg:w-1/3 flex  justify-center items-center h-auto">
+                <div className="flex px-2 bg-gray-200  rounded-full">
                   {!ImagePreview || InvalidImgFormat ? (
                     <>
                       <p className="text-center my-8 italic">
@@ -382,8 +345,69 @@ const NriForm = () => {
                       </p>
                     </>
                   ) : (
-                    <img className="" alt="profile" src={ImagePreview}></img>
+                    <img
+                      className="rounded-full object-contain w-44 h-44"
+                      alt="profile"
+                      src={ImagePreview}
+                    ></img>
                   )}
+                </div>
+              </div>
+              <div className="w-full lg:w-2/3 p-4">
+                <label className="text-md    ml-3 italic  fon">Name*</label>
+                <div className="w-full h-auto pb-2 space-y-2 lg:space-y-0 lg:space-x-3 lg:flex">
+                  <input
+                    placeholder="First"
+                    type="text"
+                    id="fname"
+                    value={submitForm.fname}
+                    onChange={handleChange}
+                    className="h-10 w-full lg:w-1/3  bg-gray-200  rounded-md   pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+                  />
+                  <input
+                    placeholder="Middle"
+                    type="text"
+                    id="mname"
+                    onChange={handleChange}
+                    value={submitForm.mname}
+                    className="h-10 lg:w-1/3 w-full bg-gray-200  rounded-md   pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+                  />
+                  <input
+                    placeholder="Last"
+                    type="text"
+                    id="lname"
+                    onChange={handleChange}
+                    value={submitForm.lname}
+                    className="h-10 lg:w-1/3 w-full bg-gray-200  rounded-md border-[2px]  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent"
+                  />
+                </div>
+                <div className="w-full h-auto pb-1 lg:space-x-3 lg:flex">
+                  <div className="lg:w-1/3 pt-2">
+                    <label className="text-md  ml-3 italic ">
+                      Date of Birth*
+                    </label>
+                    <input
+                      placeholder=""
+                      type="date"
+                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+                    />
+                  </div>
+                  <div className="lg:w-2/3 pt-2">
+                    <label className="text-md    ml-3 italic ">
+                      Photo Upload*
+                    </label>
+                    <input
+                      onChange={handleImageChange}
+                      placeholder=""
+                      type="file"
+                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+                    />
+                    {InvalidImgFormat && (
+                      <p className="ml-3 text-red-700 font-mono text-center text-lg font-bold italic">
+                        Unsupported Format
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -391,7 +415,7 @@ const NriForm = () => {
             <div className="w-full py-3 h-auto lg:flex ">
               <div className="lg:w-1/2 p-2">
                 <div>
-                  <label className="text-lg  ml-3 italic">
+                  <label className="text-md    ml-3 italic  fon">
                     Permanent Address*
                   </label>
                   <input
@@ -400,61 +424,61 @@ const NriForm = () => {
                     id="phousename"
                     value={submitForm.phousename}
                     onChange={handleChange}
-                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                    className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                   />
                 </div>
                 <div className="lg:flex py-3 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
                   <div className="lg:w-1/2">
-                    <label className="text-lg  ml-3 italic">District*</label>
+                    <label className="text-md    ml-3 italic  fon">District*</label>
                     <input
                       placeholder="district"
                       type="text"
                       id="pdistrict"
                       value={submitForm.pdistrict}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                   <div className="lg:w-1/2">
-                    <label className="text-lg  ml-3 italic">State*</label>
+                    <label className="text-md    ml-3 italic  fon">State*</label>
                     <input
                       placeholder="state"
                       type="text"
                       id="pstate"
                       value={submitForm.pstate}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                 </div>
                 <div className="lg:flex py-2 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
                   <div className="lg:w-1/2">
-                    <label className="text-lg  ml-3 italic">City*</label>
+                    <label className="text-md    ml-3 italic  fon">City*</label>
                     <input
                       placeholder="City/Place"
                       type="text"
                       id="pcity"
                       value={submitForm.pcity}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                   <div className="lg:w-1/2">
-                    <label className="text-lg  ml-3 italic">Pincode*</label>
+                    <label className="text-md    ml-3 italic  fon">Pincode*</label>
                     <input
                       placeholder="xxxxxx"
                       type="text"
                       id="ppin"
                       value={submitForm.ppin}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                 </div>
               </div>
               <div className="lg:w-1/2 p-2">
                 <div>
-                  <label className="text-lg  ml-3 italic">
+                  <label className="text-md    ml-3 italic  fon">
                     Name of Sponsor*
                   </label>
                   <input
@@ -463,12 +487,12 @@ const NriForm = () => {
                     id="sponser"
                     value={submitForm.sponser}
                     onChange={handleChange}
-                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                    className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                   />
                 </div>
                 <div className="lg:flex py-3 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
                   <div className="lg:w-1/2">
-                    <label className="text-lg ml-3 italic">
+                    <label className="text-md ml-3 italic">
                       Parent/Guardian*
                     </label>
                     <input
@@ -477,23 +501,23 @@ const NriForm = () => {
                       id="parentName"
                       value={submitForm.parentName}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                   <div className="lg:w-1/2">
-                    <label className="text-lg  ml-3 italic">Occupation*</label>
+                    <label className="text-md    ml-3 italic  fon">Occupation*</label>
                     <input
                       placeholder="Parent's Occupation"
                       type="text"
                       id="occupation"
                       value={submitForm.occupation}
                       onChange={handleChange}
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                 </div>
                 <div className="py-2">
-                  <label className="text-lg  ml-3 italic">
+                  <label className="text-md    ml-3 italic  fon">
                     Relation with Applicant*
                   </label>
                   <input
@@ -502,16 +526,16 @@ const NriForm = () => {
                     id="relationWithApplicant"
                     value={submitForm.relationWithApplicant}
                     onChange={handleChange}
-                    className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                    className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                   />
                 </div>
               </div>
             </div>
           </div>
         ) : (
-          <div className="w-full bg-white h-auto ">
+          <div className="w-full rounded-md py-3 bg-white h-auto ">
             <div className="flex flex-col space-y-3 items-center p-6 justify-center">
-              <h1 className="sm:text-xl text-center text-lg font-semi-bold">
+              <h1 className="md:text-lg text-center text-lg font-semi-bold">
                 Please Note :{" "}
                 <b className="text-blue-700  italic">
                   Pay adavance provisional registration fee of Rs.1,00,500 to
@@ -519,57 +543,57 @@ const NriForm = () => {
                   slip here{" "}
                 </b>
               </h1>
-              <div className="w-full flex lg:flex-row flex-col h-auto bg-gray-300">
+              <div className="w-full flex lg:flex-row flex-col h-auto bg-zinc-300">
                 <div className="lg:w-1/2 h-auto text-center space-y-2 p-3 bg-white">
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     Name: <b>Muthoot M George Institute of Technology</b>
                   </p>
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     Address: <b>Varikoli ,Puthencruz - 682308</b>
                   </p>
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     Phone: <b>0484-2732100</b>
                   </p>
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     Bank: <b>FEDERAL BANK LTD</b>
                   </p>
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     Address: <b>PUTHENCRUZ</b>
                   </p>
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     Branch: <b>Puthencruz</b>
                   </p>
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     Phone: <b>0484-2731259</b>
                   </p>
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     Account No.: <b>122330200217387</b>
                   </p>
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     IFSC Code: <b>FDRL0001223</b>
                   </p>
-                  <p className="sm:text-xl text-lg italic">
+                  <p className="md:text-lg text-lg italic">
                     MICR Code: <b>682049055</b>
                   </p>
                 </div>
                 <div className="lg:w-1/2 h-auto text-center space-y-2 p-3 bg-white">
-                  <div className="h-auto p-4 sm:p-4 space-y-3 w-full">
-                    <label className="text-lg lg:text-xl  ml-3 italic">
+                  <div className="h-auto p-4 md:p-4 space-y-3 w-full">
+                    <label className="text-lg lg:text-lg  ml-3 italic">
                       Transaction Document*
                     </label>
                     <input
                       placeholder=""
                       type="file"
-                      className="h-10 w-full border-[2px] bg-white rounded-md pl-4 text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
-                  <div className="h-auto lg:p-4 sm:p-4 space-y-3 w-full">
-                    <p className="text-lg lg:text-xl italic">
+                  <div className="h-auto lg:p-4 md:p-4 space-y-3 w-full">
+                    <p className="text-lg lg:text-lg italic">
                       Branch Preference*
                     </p>
                     <select
                       name="branch pref"
-                      className="h-11 w-full border-[2px] rounded-md pl-2 text-md sm:text-xl focus:outline-none focus:border-teal-500 italic border-slate-700"
+                      className="h-11 w-full bg-gray-200  rounded-md   pl-2 text-md md:text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                       id="branch"
                       onChange={handleChange}
                       value={submitForm.branch}
@@ -604,21 +628,21 @@ const NriForm = () => {
             </div>
           </div>
         )}
-        <div className="flex flex-row pb-6 pr-8 justify-end bg-white space-x-4">
+        <div className="flex mt-4 rounded-md items-center flex-row p-3 justify-end bg-white space-x-4">
           <button
             id={CurrentTab ? "next" : "prev"}
             onClick={switchTab}
-            className="w-auto px-4 text-white text-lg rounded-md hover:bg-teal-500 bg-teal-600 h-11"
+            className="w-auto px-4 text-white text-lg rounded-md hover:bg-teal-500 bg-teal-600 h-9"
           >
             {CurrentTab ? "Next" : "Prev"}
           </button>
-          <button className="w-auto px-4 text-white text-lg rounded-md hover:bg-slate-600 bg-slate-800 h-11">
+          <button className="w-auto px-4 text-white text-lg rounded-md hover:bg-slate-600 bg-slate-800 h-9">
             Save
           </button>
           {!CurrentTab && (
             <button
               id="finalButton"
-              className="w-auto px-4 text-white text-lg rounded-md hover:bg-red-500 bg-red-600 h-11"
+              className="w-auto px-4 rounded-md text-white text-lg  hover:bg-red-500 bg-red-600 h-9"
             >
               Submit
             </button>

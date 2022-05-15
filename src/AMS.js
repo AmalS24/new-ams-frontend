@@ -34,7 +34,7 @@ function AMS() {
               <Typewriter
                 options={{
                   strings: [
-                    "<u>Registration</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content. The purpose of lorem ipsum is to create a natural looking, though nonsensical, text that doesn’t distract from the layout.",
+                    "<u>Registration</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content. The purpose of lorem ipsum is to create a natural looking, though nonsensical, text that doesn't distract from the layout.",
                     "<u>Login</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content.",
                     "<u>Forms</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content.",
                     "<u>Payment</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content.",
