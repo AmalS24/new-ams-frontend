@@ -14,7 +14,8 @@ import Nri from "./ams-admin/Pages/Nri";
 import Gov from "./ams-admin/Pages/Gov";
 import Mgmt from "./ams-admin/Pages/Mgmt";
 import Settings from "./ams-admin/Pages/Settings";
-import DashBoard from "./DashBoard";
+import Dashboard from "./ams-client/Dashboard";
+
 
 const App = () => {
   const access = localStorage.getItem("access_token")
@@ -36,9 +37,11 @@ const App = () => {
         <Route path="verify" element={<p>VERIFICATION</p>} />
         <Route path="settings" element={<Settings/>} />
        </Route>):<Route path="/admin" element={<Loader />}/>}
-    </Routes>  */}
-     {/* <DashBoard /> */}
-     <NriForm />
+    </Routes> 
+     */}
+     <Dashboard />
+     {/* <NriForm /> */}
+     {/* <AMS/> */}
     </>
   );
 };

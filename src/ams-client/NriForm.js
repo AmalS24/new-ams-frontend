@@ -90,7 +90,7 @@ const NriForm = () => {
     e.preventDefault();
     const ID = e.target.id;
     const active_tab =
-      "w-full rounded-md items-center cursor-pointer flex justify-center bg-white ";
+      "w-full border-[3px] border-teal-500 rounded-md items-center cursor-pointer flex justify-center bg-white ";
     const active_header = "text-teal-500 text-2xl";
     const inactive_tab =
       "w-full rounded-md items-center cursor-pointer lg:flex hidden justify-center bg-white border-slate-600";
@@ -282,7 +282,7 @@ const NriForm = () => {
           <div
             onClick={switchTab}
             id="tab1"
-            className="w-full rounded-md items-center cursor-pointer flex justify-center bg-white "
+            className="w-full rounded-md items-center cursor-pointer flex justify-center border-[3px] border-teal-500 bg-white "
           >
            <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -331,7 +331,7 @@ const NriForm = () => {
           <div className="w-full bg-white rounded-md pt-4 h-auto space-y-2 p-4">
             <div className="w-full h-auto lg:flex ">
               <div className="lg:w-1/3 flex  justify-center items-center h-auto">
-                <div className="flex px-2 bg-gray-200  rounded-full">
+                <div className="flex px-2 bg-gray-200 rounded-md">
                   {!ImagePreview || InvalidImgFormat ? (
                     <>
                       <p className="text-center my-8 italic">
@@ -346,7 +346,7 @@ const NriForm = () => {
                     </>
                   ) : (
                     <img
-                      className="rounded-full object-contain w-44 h-44"
+                      className="rounded-md object-contain w-44 h-44"
                       alt="profile"
                       src={ImagePreview}
                     ></img>
@@ -362,7 +362,8 @@ const NriForm = () => {
                     id="fname"
                     value={submitForm.fname}
                     onChange={handleChange}
-                    className="h-10 w-full lg:w-1/3  bg-gray-200  rounded-md   pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+                    required={true}
+                    className="h-10 w-full lg:w-1/3  bg-gray-200 rounded-md   pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                   />
                   <input
                     placeholder="Middle"
@@ -370,7 +371,7 @@ const NriForm = () => {
                     id="mname"
                     onChange={handleChange}
                     value={submitForm.mname}
-                    className="h-10 lg:w-1/3 w-full bg-gray-200  rounded-md   pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+                    className="h-10 lg:w-1/3 w-full bg-gray-200 rounded-md   pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                   />
                   <input
                     placeholder="Last"
@@ -378,7 +379,8 @@ const NriForm = () => {
                     id="lname"
                     onChange={handleChange}
                     value={submitForm.lname}
-                    className="h-10 lg:w-1/3 w-full bg-gray-200  rounded-md border-[2px]  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent"
+                   required={true}
+                    className="h-10 lg:w-1/3 w-full bg-gray-200 rounded-md border-[2px]  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent"
                   />
                 </div>
                 <div className="w-full h-auto pb-1 lg:space-x-3 lg:flex">
@@ -389,7 +391,8 @@ const NriForm = () => {
                     <input
                       placeholder=""
                       type="date"
-                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                   <div className="lg:w-2/3 pt-2">
@@ -400,7 +403,8 @@ const NriForm = () => {
                       onChange={handleImageChange}
                       placeholder=""
                       type="file"
-                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                     {InvalidImgFormat && (
                       <p className="ml-3 text-red-700 font-mono text-center text-lg font-bold italic">
@@ -424,7 +428,8 @@ const NriForm = () => {
                     id="phousename"
                     value={submitForm.phousename}
                     onChange={handleChange}
-                    className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+          required={true}
+                    className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                   />
                 </div>
                 <div className="lg:flex py-3 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
@@ -436,7 +441,8 @@ const NriForm = () => {
                       id="pdistrict"
                       value={submitForm.pdistrict}
                       onChange={handleChange}
-                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                   <div className="lg:w-1/2">
@@ -447,7 +453,8 @@ const NriForm = () => {
                       id="pstate"
                       value={submitForm.pstate}
                       onChange={handleChange}
-                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                 </div>
@@ -460,7 +467,8 @@ const NriForm = () => {
                       id="pcity"
                       value={submitForm.pcity}
                       onChange={handleChange}
-                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                   <div className="lg:w-1/2">
@@ -471,7 +479,8 @@ const NriForm = () => {
                       id="ppin"
                       value={submitForm.ppin}
                       onChange={handleChange}
-                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                 </div>
@@ -487,7 +496,8 @@ const NriForm = () => {
                     id="sponser"
                     value={submitForm.sponser}
                     onChange={handleChange}
-                    className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+          required={true}
+                    className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                   />
                 </div>
                 <div className="lg:flex py-3 space-y-2 lg:space-y-0 lg:space-x-2 w-full">
@@ -501,7 +511,8 @@ const NriForm = () => {
                       id="parentName"
                       value={submitForm.parentName}
                       onChange={handleChange}
-                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                   <div className="lg:w-1/2">
@@ -512,7 +523,8 @@ const NriForm = () => {
                       id="occupation"
                       value={submitForm.occupation}
                       onChange={handleChange}
-                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                 </div>
@@ -526,7 +538,8 @@ const NriForm = () => {
                     id="relationWithApplicant"
                     value={submitForm.relationWithApplicant}
                     onChange={handleChange}
-                    className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+          required={true}
+                    className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                   />
                 </div>
               </div>
@@ -584,7 +597,8 @@ const NriForm = () => {
                     <input
                       placeholder=""
                       type="file"
-                      className="h-10 w-full bg-gray-200  rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-10 w-full bg-gray-200 rounded-md  bg-white  pl-4 text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                     />
                   </div>
                   <div className="h-auto lg:p-4 md:p-4 space-y-3 w-full">
@@ -593,7 +607,8 @@ const NriForm = () => {
                     </p>
                     <select
                       name="branch pref"
-                      className="h-11 w-full bg-gray-200  rounded-md   pl-2 text-md md:text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
+            required={true}
+                      className="h-11 w-full bg-gray-200 rounded-md   pl-2 text-md md:text-lg focus:outline-none focus:border-teal-500 focus:bg-white italic border-transparent border-[2px]"
                       id="branch"
                       onChange={handleChange}
                       value={submitForm.branch}
@@ -632,9 +647,9 @@ const NriForm = () => {
           <button
             id={CurrentTab ? "next" : "prev"}
             onClick={switchTab}
-            className="w-auto px-4 text-white text-lg rounded-md hover:bg-teal-500 bg-teal-600 h-9"
+            className="w-auto blur-none z-10 px-4 text-white text-lg rounded-md hover:bg-teal-500 bg-teal-600 h-9"
           >
-            {CurrentTab ? "Next" : "Prev"}
+            {CurrentTab ? "Next" : "Back"}
           </button>
           <button className="w-auto px-4 text-white text-lg rounded-md hover:bg-slate-600 bg-slate-800 h-9">
             Save
