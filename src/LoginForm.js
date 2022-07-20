@@ -36,6 +36,12 @@ const LoginForm = () => {
       nav("/admin")
       window.location.reload()
     }
+    else if(data.applicationNo === "coadmin")
+    {
+      localStorage.setItem("coadmin_access_token","abcd")
+      nav("/coadmin")
+      window.location.reload()
+    }
     else
     {
       axios

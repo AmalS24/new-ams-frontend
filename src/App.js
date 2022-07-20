@@ -20,9 +20,10 @@ import Dashboard from "./ams-client/Dashboard";
 const App = () => {
   const access = localStorage.getItem("access_token")
   const admin_access = localStorage.getItem("admin_access_token")
+  const coadmin_access = localStorage.getItem("coadmin_access_token")
   return (
     <>
-    {/* <Routes>
+    <Routes>
       <Route path="/"  element={<AMS/>}/>
       <Route path="/registration" element={<RegisterForm/>}/>
       <Route path="/login" element={<LoginForm/>}/>
@@ -37,9 +38,14 @@ const App = () => {
         <Route path="verify" element={<p>VERIFICATION</p>} />
         <Route path="settings" element={<Settings/>} />
        </Route>):<Route path="/admin" element={<Loader />}/>}
+       {
+        coadmin_access?(
+          <Route path="/coadmin" element={<Dashboard/>}/>
+        ):<Route path="/coadmin" element={<Loader />}/>
+       }
     </Routes> 
-     */}
-     <Dashboard />
+    
+     {/* <Dashboard /> */}
      {/* <NriForm /> */}
      {/* <AMS/> */}
     </>

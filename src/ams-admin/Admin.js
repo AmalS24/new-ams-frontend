@@ -19,7 +19,7 @@ const Admin = () => {
     <div className=" h-auto min-w-screen xl:h-screen min-h-screen flex items-center py-6 xl:p-6  bg-slate-300">
       
         <Navbar data={toggleBar} onToggle={closeNavBar} />
-        <div className="w-auto mx-auto sm:w-5/6 flex space-y-4 flex-col sm:p-4 h-full">
+        <div className="w-auto mx-auto  font-poppins font-lg sm:w-5/6 flex space-y-4 flex-col sm:p-4 h-full">
           <TitleBar onToggle={openNavBar} />
           <Outlet/>
         </div>

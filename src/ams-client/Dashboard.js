@@ -52,7 +52,6 @@ const Dashboard = () => {
             <br />
             Relation with Applicant: <b>Father</b>
             <br />
-            NRI Sponsor: <b>Nil</b>
           </p>
 
           <p className="text-3xl mb-2 ">Permanent Address</p>
